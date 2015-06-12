@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "devalpha", "devalpha.shproj", "{5C1A1474-2BD3-47DB-9574-A181D8317C31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "devalpha.iOS", "iOS\devalpha.iOS.csproj", "{D92D94ED-5FDA-4913-976E-508E9CEFD533}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|iPhoneSimulator = Debug|iPhoneSimulator
+		Release|iPhone = Release|iPhone
+		Release|iPhoneSimulator = Release|iPhoneSimulator
+		Debug|iPhone = Debug|iPhone
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Debug|iPhone.ActiveCfg = Debug|iPhone
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Debug|iPhone.Build.0 = Debug|iPhone
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Release|iPhone.ActiveCfg = Release|iPhone
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Release|iPhone.Build.0 = Release|iPhone
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
+		{D92D94ED-5FDA-4913-976E-508E9CEFD533}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
+	EndGlobalSection
+EndGlobal
