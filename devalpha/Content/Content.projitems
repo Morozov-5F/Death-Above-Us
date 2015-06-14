@@ -10,25 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)assets\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Content\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Content\turrets\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Content\levels\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)assets\Content.mgcb" />
-    <None Include="$(MSBuildThisFileDirectory)Content\.DS_Store" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\mountain.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\tree.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\tree1.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\turrets\1\1.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\turrets\1\2.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\background\bg0.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\background\bg1.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\background\bg2.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\background\bg3.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\background\bg4.xnb" />
-    <Content Include="$(MSBuildThisFileDirectory)Content\levels\1\background\bg5.xnb" />
   </ItemGroup>
 </Project>
