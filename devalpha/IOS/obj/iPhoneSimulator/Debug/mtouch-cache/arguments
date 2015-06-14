@@ -1,0 +1,37 @@
+# Version: 8.10.1.64 (e6ebd18)
+# [first argument, ignore] # /Users/EvgeniyMorozov/devalpha/IOS/mtouch.exe
+/Library/Frameworks/Xamarin.iOS.framework/Versions/8.10.1.64/bin/mtouch \
+	--cache \
+	/Users/EvgeniyMorozov/devalpha/IOS/obj/iPhoneSimulator/Debug/mtouch-cache \
+	--sim \
+	/Users/EvgeniyMorozov/devalpha/IOS/bin/iPhoneSimulator/Debug/IOS.app \
+	--executable \
+	IOS \
+	--debug \
+	--nolink \
+	--sdkroot \
+	/Applications/Xcode.app/Contents/Developer \
+	--sdk \
+	8.3 \
+	--targetver \
+	7.1 \
+	--new-refcount \
+	--abi=i386 \
+	--symbollist \
+	/Users/EvgeniyMorozov/devalpha/IOS/obj/iPhoneSimulator/Debug/mtouch-symbols.list \
+	--dsym=no \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Xml.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/Xamarin.iOS.dll \
+	-r \
+	/Users/EvgeniyMorozov/devalpha/packages/MonoGame.Framework.iOS.3.3.0.0/lib/XamariniOS/MonoGame.Framework.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/System.Core.dll \
+	-r \
+	/Library/Frameworks/Xamarin.iOS.framework/Versions/Current/lib/mono/Xamarin.iOS/mscorlib.dll \
+	-r \
+	/Users/EvgeniyMorozov/devalpha/packages/MonoGame.Framework.iOS.3.3.0.0/lib/XamariniOS/MonoGame.Framework.dll \
+	/Users/EvgeniyMorozov/devalpha/IOS/bin/iPhoneSimulator/Debug//IOS.exe \

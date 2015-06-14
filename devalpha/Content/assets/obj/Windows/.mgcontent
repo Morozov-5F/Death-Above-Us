@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/background/bg0.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/background/bg1.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/background/bg2.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/background/bg3.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/background/bg4.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/background/ground.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/mountain.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/tree.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/levels/1/tree1.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/turrets/1/1.png</File>
+    <File>/Users/EvgeniyMorozov/devalpha/Content/assets/turrets/1/2.png</File>
+  </SourceFiles>
+</SourceFileCollection>
