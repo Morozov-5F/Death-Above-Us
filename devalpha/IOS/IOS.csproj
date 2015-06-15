@@ -94,44 +94,4 @@
   <Import Project="..\SharedData\SharedData.projitems" Label="Shared" Condition="Exists('..\SharedData\SharedData.projitems')" />
   <Import Project="..\Content\Content.projitems" Label="Shared" Condition="Exists('..\Content\Content.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <ItemGroup>
-    <Folder Include="Content\" />
-    <Folder Include="Content\levels\" />
-    <Folder Include="Content\turrets\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\mountain.xnb">
-      <Link>Content\levels\1\mountain.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\tree.xnb">
-      <Link>Content\levels\1\tree.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\tree1.xnb">
-      <Link>Content\levels\1\tree1.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg0.xnb">
-      <Link>Content\levels\1\background\bg0.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg1.xnb">
-      <Link>Content\levels\1\background\bg1.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg2.xnb">
-      <Link>Content\levels\1\background\bg2.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg3.xnb">
-      <Link>Content\levels\1\background\bg3.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg4.xnb">
-      <Link>Content\levels\1\background\bg4.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\background\ground.xnb">
-      <Link>Content\levels\1\background\ground.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\turrets\1\1.xnb">
-      <Link>Content\turrets\1\1.xnb</Link>
-    </Content>
-    <Content Include="..\Content\assets\bin\Windows\turrets\1\2.xnb">
-      <Link>Content\turrets\1\2.xnb</Link>
-    </Content>
-  </ItemGroup>
 </Project>

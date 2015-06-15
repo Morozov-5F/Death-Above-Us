@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{8964E284-335B-4F89-BB56-9ECA19ADB0CA}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Windows</RootNamespace>
+    <AssemblyName>Windows</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="MonoGame.Framework">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.3.0.0\lib\net40\MonoGame.Framework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Icon.png" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="..\SharedData\SharedData.projitems" Label="Shared" Condition="Exists('..\SharedData\SharedData.projitems')" />
+  <Import Project="..\Content\Content.projitems" Label="Shared" Condition="Exists('..\Content\Content.projitems')" />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Content\" />
+    <Folder Include="Content\levels\" />
+    <Folder Include="Content\turrets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\mountain.xnb">
+      <Link>Content\levels\1\mountain.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\tree.xnb">
+      <Link>Content\levels\1\tree.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\tree1.xnb">
+      <Link>Content\levels\1\tree1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg0.xnb">
+      <Link>Content\levels\1\background\bg0.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg1.xnb">
+      <Link>Content\levels\1\background\bg1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg2.xnb">
+      <Link>Content\levels\1\background\bg2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg3.xnb">
+      <Link>Content\levels\1\background\bg3.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg4.xnb">
+      <Link>Content\levels\1\background\bg4.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\ground.xnb">
+      <Link>Content\levels\1\background\bg5.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\turrets\1\1.xnb">
+      <Link>Content\turrets\1\1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\turrets\1\2.xnb">
+      <Link>Content\turrets\1\2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

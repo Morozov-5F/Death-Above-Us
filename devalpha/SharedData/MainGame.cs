@@ -28,8 +28,12 @@ namespace devalpha
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";	  
-            graphics.IsFullScreen = true;		
+            Content.RootDirectory = "Content";
+            graphics.IsFullScreen = true;	
+			#if !IOS && !ANDROID
+			graphics.IsFullScreen = false;
+			Debug.WriteLine("Windows test");
+			#endif
 
             TouchPanel.EnabledGestures = GestureType.HorizontalDrag;
 
@@ -78,7 +82,7 @@ namespace devalpha
         {
             // For Mobile devices, this logic will close the Game when the Back button is pressed
             // Exit() is obsolete on iOS
-            #if !__IOS__
+            #if !IOS
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             {

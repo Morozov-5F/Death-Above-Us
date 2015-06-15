@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>/Users/EvgeniyMorozov/devalpha/Content/assets/turrets/1/2.png</SourceFile>
-  <SourceTime>2015-06-04T22:50:16+03:00</SourceTime>
-  <DestFile>/Users/EvgeniyMorozov/devalpha/Content/assets/bin/Windows/turrets/1/2.xnb</DestFile>
-  <DestTime>2015-06-14T23:11:30+03:00</DestTime>
+<PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <SourceFile>D:/Projects/DeathAboveUs/Death-Above-Us/devalpha/Content/assets/turrets/1/2.png</SourceFile>
+  <SourceTime>2015-06-15T20:16:49.465825+04:00</SourceTime>
+  <DestFile>D:/Projects/DeathAboveUs/Death-Above-Us/devalpha/Content/assets/bin/Windows/turrets/1/2.xnb</DestFile>
+  <DestTime>2015-06-15T20:22:13.0135212+04:00</DestTime>
   <Importer>TextureImporter</Importer>
-  <ImporterTime>2015-04-29T20:13:03+03:00</ImporterTime>
+  <ImporterTime>2015-04-29T21:14:44+04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>
-  <ProcessorTime>2015-04-29T20:13:03+03:00</ProcessorTime>
+  <ProcessorTime>2015-04-29T21:14:44+04:00</ProcessorTime>
   <Parameters>
     <Key>ColorKeyColor</Key>
     <Value>255,0,255,255</Value>
