@@ -29,6 +29,7 @@ namespace devalpha.Objects
         public Vector2    Scale;
 
         public const float MAX_ROTATION = (float)Math.PI / 2.5f;
+        private float prevMouseX;
 
         public Turret(Vector2 position)
         {
@@ -56,6 +57,7 @@ namespace devalpha.Objects
 
         public void Update(GameTime time)
         {
+            // Управление жестами
             var gesture = default(GestureSample);
 
             while (TouchPanel.IsGestureAvailable)
@@ -64,15 +66,24 @@ namespace devalpha.Objects
             if (gesture.GestureType == GestureType.HorizontalDrag)
             {
                 turretRotation += MathHelper.ToRadians(gesture.Delta.X / 1.3f);
+            }
 
-                if (turretRotation > MAX_ROTATION)
-                {
-                    turretRotation = MAX_ROTATION;
-                }
-                if (turretRotation < -MAX_ROTATION)
-                {
-                    turretRotation = -MAX_ROTATION;
-                }
+            // Управление мышью
+            var mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed)
+            {
+                turretRotation += MathHelper.ToRadians((mouseState.Position.X - prevMouseX) / 1.3f);
+            }
+            prevMouseX = mouseState.Position.X;
+
+            // Ограничение поворота
+            if (turretRotation > MAX_ROTATION)
+            {
+                turretRotation = MAX_ROTATION;
+            }
+            if (turretRotation < -MAX_ROTATION)
+            {
+                turretRotation = -MAX_ROTATION;
             }
             Camera.Position = new Vector2(-MathHelper.ToDegrees(Math.Abs(turretRotation)) * Math.Sign(turretRotation), 0) / 2f;
         }

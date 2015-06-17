@@ -27,15 +27,16 @@ namespace devalpha.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            if (gameTime.TotalGameTime.Seconds >= 3)
+            var mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed || gameTime.TotalGameTime.Seconds >= 3)
             {
                 MainGame.sceneManager.LoadScene(new LevelScene(graphics));
-            }
+            }       
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
-            background.Draw(spriteBatch);
+            //background.Draw(spriteBatch);
         }
     }
 }

@@ -1,13 +1,17 @@
 ﻿<Properties StartupItem="Windows\Windows.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SharedData\MainGame.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SharedData\Objects\Turret.cs">
     <Files>
       <File FileName="IOS\Main.cs" Line="1" Column="1" />
-      <File FileName="SharedData\MainGame.cs" Line="35" Column="34" />
-      <File FileName="SharedData\Background.cs" Line="32" Column="4" />
+      <File FileName="SharedData\MainGame.cs" Line="1" Column="1" />
+      <File FileName="SharedData\Background.cs" Line="1" Column="1" />
       <File FileName="IOS\Entitlements.plist" Line="1" Column="1" />
-      <File FileName="SharedData\Objects\Asteroid.cs" Line="1" Column="1" />
-      <File FileName="SharedData\Objects\Turret.cs" Line="1" Column="1" />
+      <File FileName="SharedData\Objects\Turret.cs" Line="78" Column="17" />
+      <File FileName="SharedData\Scenes\SceneManager.cs" Line="1" Column="1" />
+      <File FileName="SharedData\Scenes\Scene.cs" Line="1" Column="1" />
+      <File FileName="SharedData\Scenes\LevelScene.cs" Line="1" Column="1" />
+      <File FileName="SharedData\CollidableObject.cs" Line="1" Column="1" />
+      <File FileName="SharedData\Scenes\MenuScene.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

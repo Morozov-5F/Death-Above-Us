@@ -32,6 +32,7 @@ namespace devalpha
             graphics.IsFullScreen = true;	
 			#if !IOS && !ANDROID
 			graphics.IsFullScreen = false;
+            IsMouseVisible = true;
 			#endif
 
             TouchPanel.EnabledGestures = GestureType.HorizontalDrag;
