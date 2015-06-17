@@ -23,7 +23,7 @@ namespace devalpha
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private SceneManager sceneManager;
+        public static SceneManager sceneManager;
 		
         public MainGame()
         {
@@ -70,7 +70,7 @@ namespace devalpha
             sceneManager = new SceneManager(spriteBatch, graphics, Content);
 
             // Загрузка первой сцены
-            sceneManager.LoadScene(new LevelScene(graphics));
+            sceneManager.LoadScene(new MenuScene(graphics));
         }
 
         /// <summary>

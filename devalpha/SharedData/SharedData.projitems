@@ -16,7 +16,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Asteroid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Turret.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Camera.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)GameScene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\SceneManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\LevelScene.cs" />
