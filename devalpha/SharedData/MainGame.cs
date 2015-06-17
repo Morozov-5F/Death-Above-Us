@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
 
 using devalpha.Objects;
+using devalpha.Scenes;
 
 #endregion
 
@@ -22,9 +23,8 @@ namespace devalpha
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
 
-        private Turret player;
-        private Background bg;
-
+        private SceneManager sceneManager;
+		
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -32,7 +32,6 @@ namespace devalpha
             graphics.IsFullScreen = true;	
 			#if !IOS && !ANDROID
 			graphics.IsFullScreen = false;
-			Debug.WriteLine("Windows test");
 			#endif
 
             TouchPanel.EnabledGestures = GestureType.HorizontalDrag;
@@ -48,15 +47,11 @@ namespace devalpha
         /// </summary>
         protected override void Initialize()
         {
+            // Инициализация камеры
             Camera.Position = Vector2.Zero;
             Camera.Rotation = 0;
             Camera.DrawScale = graphics.GraphicsDevice.Viewport.Height / 900f;
             Camera.DeviceViewport = GraphicsDevice.Viewport;
-
-            bg = new Background(1);
-            player = new Turret(new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height - 28 * Camera.DrawScale) * Camera.GameScale);
-            player.Scale = new Vector2(1f, 1f) * (graphics.GraphicsDevice.Viewport.Height / 2560f); 
-
             base.Initialize();
         }
 
@@ -68,9 +63,14 @@ namespace devalpha
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            player.LoadContent(this.Content);
-            bg.LoadContent(this.Content);
-            //TODO: use this.Content to load your game content here 
+
+            //TODO: Загрузка контента, который потребуется во всей игре
+
+            // Создание SceneManager'а
+            sceneManager = new SceneManager(spriteBatch, graphics, Content);
+
+            // Загрузка первой сцены
+            sceneManager.LoadScene(new LevelScene(graphics));
         }
 
         /// <summary>
@@ -89,8 +89,8 @@ namespace devalpha
                 Exit();
             }
             #endif
-            player.Update(gameTime);
-            // TODO: Add your update logic here			
+            // Обновление сцены
+            sceneManager.Update(gameTime);			
             base.Update(gameTime);
         }
 
@@ -101,15 +101,10 @@ namespace devalpha
         protected override void Draw(GameTime gameTime)
         {
             graphics.GraphicsDevice.Clear(Color.WhiteSmoke);
-		
-            //TODO: Add your drawing code here
 
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, Camera.TransformMatrix);
-//            spriteBatch.Draw(testTexture, new Vector2(1100, player.Position.Y - 200) - Camera.Position / Camera.GameScale * 0.5f, Color.White);
-//            spriteBatch.Draw(tree, new Vector2(1300, player.Position.Y - 100) - Camera.Position / Camera.GameScale * 0.3f, Color.White);
-           
-            bg.Draw(spriteBatch);
-            player.Draw(spriteBatch);
+            // Отрисовка сцены
+            sceneManager.Draw();
             spriteBatch.End();
 
             base.Draw(gameTime);
