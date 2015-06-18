@@ -24,7 +24,8 @@ namespace devalpha
         private SpriteBatch spriteBatch;
 
         public static SceneManager sceneManager;
-		
+        public static Vector2 screenSize;
+
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -52,7 +53,9 @@ namespace devalpha
             Camera.Position = Vector2.Zero;
             Camera.Rotation = 0;
             Camera.DrawScale = graphics.GraphicsDevice.Viewport.Height / 900f;
-            Camera.DeviceViewport = GraphicsDevice.Viewport;
+            Camera.DeviceViewport = graphics.GraphicsDevice.Viewport;
+
+            screenSize = new Vector2(graphics.GraphicsDevice.Viewport.Width, graphics.GraphicsDevice.Viewport.Height) * Camera.GameScale;
             base.Initialize();
         }
 

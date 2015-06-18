@@ -50,6 +50,8 @@
     <Folder Include="Content\" />
     <Folder Include="Content\levels\" />
     <Folder Include="Content\turrets\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\menu\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Content\assets\bin\Windows\levels\1\mountain.xnb">
@@ -95,6 +97,22 @@
     <Content Include="..\Content\assets\bin\Windows\turrets\1\2.xnb">
       <Link>Content\turrets\1\2.xnb</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\fonts\menu_font.xnb">
+      <Link>Content\fonts\menu_font.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg1.xnb">
+      <Link>Content\menu\bg1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg2.xnb">
+      <Link>Content\menu\bg2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\logo.xnb">
+      <Link>Content\menu\logo.xnb</Link>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 </Project>
