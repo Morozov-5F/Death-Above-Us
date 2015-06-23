@@ -11,5 +11,5 @@
 
 # Precautions 
 
-bin/
-obj/
+/**/bin/
+/**/obj/
