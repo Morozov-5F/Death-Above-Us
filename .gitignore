@@ -1,6 +1,15 @@
+# Content files
+*.xnb
+*.mgcontent
+
 # Build results
 
 [Dd]ebug/
 [Rr]elease/
 [Bb]in/
 [Oo]bj/
+
+# Precautions 
+
+bin/
+obj/
