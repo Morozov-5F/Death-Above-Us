@@ -1,12 +1,6 @@
-# Compiled content
-*.xnb
-
 # Build results
+
 [Dd]ebug/
 [Rr]elease/
 [Bb]in/
 [Oo]bj/
-
-# Pre-cautions section
-bin/
-obj/
