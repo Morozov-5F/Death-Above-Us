@@ -80,6 +80,12 @@
     <None Include="Info.plist" />
     <None Include="packages.config" />
     <None Include="Entitlements.plist" />
+    <None Include="..\Content\assets\bin\Windows\turrets\1\1.xnb">
+      <Link>Windows\turrets\1\1.xnb</Link>
+    </None>
+    <None Include="..\Content\assets\bin\Windows\turrets\1\2.xnb">
+      <Link>Windows\turrets\1\2.xnb</Link>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Default.png" />
@@ -94,4 +100,48 @@
   <Import Project="..\SharedData\SharedData.projitems" Label="Shared" Condition="Exists('..\SharedData\SharedData.projitems')" />
   <Import Project="..\Content\Content.projitems" Label="Shared" Condition="Exists('..\Content\Content.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Windows\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg1.xnb">
+      <Link>Windows\menu\bg1.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\fonts\menu_font.xnb">
+      <Link>Windows\fonts\menu_font.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\mountain.xnb">
+      <Link>Windows\levels\1\mountain.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\tree.xnb">
+      <Link>Windows\levels\1\tree.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\tree1.xnb">
+      <Link>Windows\levels\1\tree1.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg0.xnb">
+      <Link>Windows\levels\1\background\bg0.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg1.xnb">
+      <Link>Windows\levels\1\background\bg1.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg2.xnb">
+      <Link>Windows\levels\1\background\bg2.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg3.xnb">
+      <Link>Windows\levels\1\background\bg3.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg4.xnb">
+      <Link>Windows\levels\1\background\bg4.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\ground.xnb">
+      <Link>Windows\levels\1\background\ground.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg2.xnb">
+      <Link>Windows\menu\bg2.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\logo.xnb">
+      <Link>Windows\menu\logo.xnb</Link>
+    </Content>
+  </ItemGroup>
 </Project>

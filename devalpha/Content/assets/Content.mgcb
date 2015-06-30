@@ -137,7 +137,7 @@
 #begin fonts/menu_font.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
+/processorParam:TextureFormat=NoChange
 /build:fonts/menu_font.spritefont
 
 #begin menu/bg1.png

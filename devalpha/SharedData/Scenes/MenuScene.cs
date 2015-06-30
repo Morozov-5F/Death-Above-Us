@@ -29,7 +29,7 @@ namespace devalpha.Scenes
         public MenuScene(GraphicsDeviceManager graphics) : base(graphics)
         {
             // Тестовые кнопки для красоты
-            menuButtons = new String[]{"Новая игра", "Бесконечный режим", "Настройки", "Об игре"};
+            menuButtons = new String[]{@"Новая игра", @"Бесконечный режим", @"Настройки", @"Об игре"};
             for (int i = 0; i < menuButtons.Length; i++)
             {
                 menuButtons[i] = menuButtons[i].ToUpper();
@@ -74,18 +74,18 @@ namespace devalpha.Scenes
         public override void Draw(SpriteBatch spriteBatch)
         {
             // Фон
-            spriteBatch.Draw(background1, skyPosition, null, Color.White, 0, Vector2.Zero, backgroundScale * 2f, SpriteEffects.None, 0);
-            spriteBatch.Draw(background2, Vector2.Zero, null, Color.White, 0, Vector2.Zero, backgroundScale, SpriteEffects.None, 0);
+            spriteBatch.Draw(background1, skyPosition, null, Color.White, 0, Vector2.Zero, backgroundScale * 2f, SpriteEffects.None, 1f);
+            spriteBatch.Draw(background2, Vector2.Zero, null, Color.White, 0, Vector2.Zero, backgroundScale, SpriteEffects.None, 1f);
 
             // Лого
-            spriteBatch.Draw(logoTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, logoScale, SpriteEffects.None, 0);
+            spriteBatch.Draw(logoTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, logoScale, SpriteEffects.None, 1f);
 
             // Кнопки меню
             for (int i = 0; i < menuButtons.Length; i++)
             {
                 var buttonSize = menuFont.MeasureString(menuButtons[i]);
                 var buttonPos = new Vector2(MainGame.screenSize.X / 2f - buttonSize.X / 2f, menuButtonsOffset + (buttonSize.Y + menuButtonsSpace) * i);
-                spriteBatch.DrawString(menuFont, menuButtons[i], buttonPos, Color.White);
+				spriteBatch.DrawString(menuFont, menuButtons[i], buttonPos, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             }
         }
     }

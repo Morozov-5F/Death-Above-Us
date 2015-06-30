@@ -26,10 +26,15 @@ namespace devalpha
         public static SceneManager sceneManager;
         public static Vector2 screenSize;
 
+		SpriteFont font;
+
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
+			Content.RootDirectory = "Content";
+			//#if __IOS__ 
+            Content.RootDirectory = "Windows";
+			//#endif
             graphics.IsFullScreen = true;	
 			#if !IOS && !ANDROID
 			graphics.IsFullScreen = false;
@@ -64,12 +69,12 @@ namespace devalpha
         /// all of your content.
         /// </summary>
         protected override void LoadContent()
-        {
+		{
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
             //TODO: Загрузка контента, который потребуется во всей игре
-
+			
             // Создание SceneManager'а
             sceneManager = new SceneManager(spriteBatch, graphics, Content);
 
@@ -86,7 +91,7 @@ namespace devalpha
         {
             // For Mobile devices, this logic will close the Game when the Back button is pressed
             // Exit() is obsolete on iOS
-            #if !IOS
+            #if !__IOS__
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed ||
             Keyboard.GetState().IsKeyDown(Keys.Escape))
             {
@@ -104,12 +109,11 @@ namespace devalpha
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-            graphics.GraphicsDevice.Clear(Color.WhiteSmoke);
-
+			graphics.GraphicsDevice.Clear(Color.LightGray);
             spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, Camera.TransformMatrix);
             // Отрисовка сцены
-            sceneManager.Draw();
-            spriteBatch.End();
+			sceneManager.Draw();
+			spriteBatch.End();
 
             base.Draw(gameTime);
         }
