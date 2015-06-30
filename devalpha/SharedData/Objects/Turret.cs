@@ -13,7 +13,7 @@ namespace devalpha.Objects
 {
     public class Turret : ISprite
     {
-        private float turretRotation;
+        private float     turretRotation;
         private Vector2   basePosition;
         private Vector2   turretOffset, baseOffset;
 

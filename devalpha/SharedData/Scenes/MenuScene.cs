@@ -8,6 +8,7 @@ using devalpha.Scenes;
 using Microsoft.Xna.Framework.Input;
 using devalpha;
 using System.Diagnostics;
+using devalpha.UI;
 
 namespace devalpha.Scenes
 {
@@ -26,6 +27,9 @@ namespace devalpha.Scenes
         private Texture2D logoTexture;
         private Vector2 logoScale;
 
+        private Button testButton;
+        int count;
+
         public MenuScene(GraphicsDeviceManager graphics) : base(graphics)
         {
             // Тестовые кнопки для красоты
@@ -34,6 +38,20 @@ namespace devalpha.Scenes
             {
                 menuButtons[i] = menuButtons[i].ToUpper();
             }
+
+            testButton = new Button();
+            testButton.Position = new Vector2(0f, 0f);
+            testButton.Size = new Vector2(110f, 30f);
+            testButton.setClickHandler(onClick);
+            testButton.Text = "testButton: 0";
+            count = 0;
+        }
+
+
+        public void onClick()
+        {
+            count++;
+            testButton.Text = "testButton: " + count.ToString();
         }
 
         public override void LoadContent(ContentManager Content)
@@ -55,20 +73,23 @@ namespace devalpha.Scenes
 
             menuButtonsOffset = MainGame.screenSize.Y / 2f - ((menuFont.MeasureString(menuButtons[0]).Y + menuButtonsSpace) * menuButtons.Length - menuButtonsSpace) / 2f;
             menuButtonsSpace = 20f * Camera.GameScale;
+
+            testButton.Font = menuFont;
         }
 
         public override void Update(GameTime gameTime)
         {
+            testButton.Update(gameTime);
             float deltaTime = (float)gameTime.ElapsedGameTime.Milliseconds / 1000f;
             // Движение слоя неба
             skyPosition -= new Vector2(3f * deltaTime * Camera.GameScale);
 
             // Переход на следующий экран по клику
-            var mouseState = Mouse.GetState();
-            if (mouseState.LeftButton == ButtonState.Pressed /*|| gameTime.TotalGameTime.Seconds >= 3*/)
-            {
-                MainGame.sceneManager.LoadScene(new LevelScene(graphics));
-            }       
+            //var mouseState = Mouse.GetState();
+            //if (mouseState.LeftButton == ButtonState.Pressed /*|| gameTime.TotalGameTime.Seconds >= 3*/)
+            //{
+            //    MainGame.sceneManager.LoadScene(new LevelScene(graphics));
+            //}    
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -87,6 +108,7 @@ namespace devalpha.Scenes
                 var buttonPos = new Vector2(MainGame.screenSize.X / 2f - buttonSize.X / 2f, menuButtonsOffset + (buttonSize.Y + menuButtonsSpace) * i);
 				spriteBatch.DrawString(menuFont, menuButtons[i], buttonPos, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             }
+            testButton.Draw(spriteBatch);
         }
     }
 }

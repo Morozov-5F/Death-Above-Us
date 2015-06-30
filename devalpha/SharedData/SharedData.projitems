@@ -20,11 +20,13 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\LevelScene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\MenuScene.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Objects\" />
     <Folder Include="$(MSBuildThisFileDirectory)Utils\" />
     <Folder Include="$(MSBuildThisFileDirectory)Utils\Новая папка\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\" />
+    <Folder Include="$(MSBuildThisFileDirectory)UI\" />
   </ItemGroup>
 </Project>
