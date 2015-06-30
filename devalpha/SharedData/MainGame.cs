@@ -33,7 +33,6 @@ namespace devalpha
             graphics = new GraphicsDeviceManager(this);
 			Content.RootDirectory = "Content";
 			//#if __IOS__ 
-            Content.RootDirectory = "Windows";
 			//#endif
             graphics.IsFullScreen = true;	
 			#if !IOS && !ANDROID

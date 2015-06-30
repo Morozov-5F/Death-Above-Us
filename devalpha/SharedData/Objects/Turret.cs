@@ -34,7 +34,7 @@ namespace devalpha.Objects
         public Turret(Vector2 position)
         {
             Debug.WriteLine("Object turret is being constructed");
-            Scale = new Vector2(1f, 1f) * 0.25f;
+            Scale = Vector2.One;
             basePosition = position;
         }
 
