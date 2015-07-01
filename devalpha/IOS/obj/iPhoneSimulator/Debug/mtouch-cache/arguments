@@ -12,7 +12,7 @@
 	--sdkroot \
 	/Applications/Xcode.app/Contents/Developer \
 	--sdk \
-	8.3 \
+	8.4 \
 	--targetver \
 	7.1 \
 	--new-refcount \

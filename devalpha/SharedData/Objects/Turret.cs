@@ -26,7 +26,6 @@ namespace devalpha.Objects
 
         // TODO: bottom edge for turret
         public Vector2    BottomEdge { get {return basePosition + baseOffset; } }
-        public Vector2    Scale;
 
         public const float MAX_ROTATION = (float)Math.PI / 2.5f;
         private float prevMouseX;
@@ -34,14 +33,13 @@ namespace devalpha.Objects
         public Turret(Vector2 position)
         {
             Debug.WriteLine("Object turret is being constructed");
-            Scale = Vector2.One;
             basePosition = position;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            spriteBatch.Draw(baseTexture, basePosition, null, null, baseOffset, 0, Scale, Color.White, SpriteEffects.None, 0);
-            spriteBatch.Draw(turretTexture, basePosition, null, null, turretOffset, turretRotation, Scale, Color.White, SpriteEffects.None, 0);
+            spriteBatch.Draw(baseTexture, basePosition, null, null, baseOffset, 0, Vector2.One, Color.White, SpriteEffects.None, 0);
+			spriteBatch.Draw(turretTexture, basePosition, null, null, turretOffset, turretRotation, Vector2.One, Color.White, SpriteEffects.None, 0);
         }
 
         public void LoadContent(ContentManager contentManager)
@@ -49,33 +47,34 @@ namespace devalpha.Objects
             baseTexture = contentManager.Load<Texture2D>(@"turrets\1\1");
             turretTexture = contentManager.Load<Texture2D>(@"turrets\1\2");
 
-            basePosition -= new Vector2(0, Texture.Height * Scale.Y);
+            basePosition -= new Vector2(0, Texture.Height);
 
-            turretOffset = new Vector2(121f, 270f);
-            baseOffset = new Vector2(207f, 0f);
+            turretOffset = new Vector2(30f, 70f);
+            baseOffset = new Vector2(52f, 0f);
         }
 
         public void Update(GameTime time)
         {
             // Управление жестами
+			#if __MOBILE__
             var gesture = default(GestureSample);
 
             while (TouchPanel.IsGestureAvailable)
                 gesture = TouchPanel.ReadGesture();
-
             if (gesture.GestureType == GestureType.HorizontalDrag)
             {
                 turretRotation += MathHelper.ToRadians(gesture.Delta.X / 1.3f);
             }
-
+			#endif
             // Управление мышью
+			#if !__MOBILE__
             var mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
                 turretRotation += MathHelper.ToRadians((mouseState.Position.X - prevMouseX) / 1.3f);
             }
             prevMouseX = mouseState.Position.X;
-
+			#endif
             // Ограничение поворота
             if (turretRotation > MAX_ROTATION)
             {

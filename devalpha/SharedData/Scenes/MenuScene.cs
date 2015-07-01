@@ -1,15 +1,16 @@
 ﻿using System;
+using System.Diagnostics;
 
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-
-using devalpha.Scenes;
 using Microsoft.Xna.Framework.Input;
-using devalpha;
-using System.Diagnostics;
-using devalpha.UI;
+using Microsoft.Xna.Framework.Input.Touch;
 
+using devalpha;
+using devalpha.UI;
+using devalpha.Scenes;
+	
 namespace devalpha.Scenes
 {
     public class MenuScene : Scene
@@ -85,11 +86,23 @@ namespace devalpha.Scenes
             skyPosition -= new Vector2(3f * deltaTime * Camera.GameScale);
 
             // Переход на следующий экран по клику
-            //var mouseState = Mouse.GetState();
-            //if (mouseState.LeftButton == ButtonState.Pressed /*|| gameTime.TotalGameTime.Seconds >= 3*/)
-            //{
-            //    MainGame.sceneManager.LoadScene(new LevelScene(graphics));
-            //}    
+			#if !__MOBILE__
+            var mouseState = Mouse.GetState();
+            if (mouseState.LeftButton == ButtonState.Pressed /*|| gameTime.TotalGameTime.Seconds >= 3*/)
+            {
+                MainGame.sceneManager.LoadScene(new LevelScene(graphics));
+            }    
+			#endif
+			#if __MOBILE__
+			var gesture = default(GestureSample);
+
+			while (TouchPanel.IsGestureAvailable)
+				gesture = TouchPanel.ReadGesture();
+			if (gesture.GestureType == GestureType.Tap)
+			{
+				MainGame.sceneManager.LoadScene(new LevelScene(graphics));
+			}
+			#endif
         }
 
         public override void Draw(SpriteBatch spriteBatch)

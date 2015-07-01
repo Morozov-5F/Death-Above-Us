@@ -2,6 +2,10 @@
 *.xnb
 *.mgcontent
 
+# Unnecessary project files
+*.userprefs
+.DS_Store
+
 # Build results
 
 [Dd]ebug/

@@ -25,9 +25,7 @@ namespace devalpha
 
         public static SceneManager sceneManager;
         public static Vector2 screenSize;
-
-		SpriteFont font;
-
+	
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -35,12 +33,12 @@ namespace devalpha
 			//#if __IOS__ 
 			//#endif
             graphics.IsFullScreen = true;	
-			#if !IOS && !ANDROID
+			#if !__MOBILE__
 			graphics.IsFullScreen = false;
             IsMouseVisible = true;
 			#endif
 
-            TouchPanel.EnabledGestures = GestureType.HorizontalDrag;
+			TouchPanel.EnabledGestures = GestureType.HorizontalDrag | GestureType.Tap;
 
             Debug.WriteLine("Touch panel gestures enabled: " + TouchPanel.EnabledGestures);
         }

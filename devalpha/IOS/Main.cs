@@ -14,7 +14,7 @@ using UIKit;
 #endregion
 
 using devalpha;
-
+using IOS;
 namespace devalpha.IOS
 {
     #if __IOS__
@@ -25,11 +25,11 @@ namespace devalpha.IOS
     static class Program
 	#endif
     {
-        private static MainGame game;
+		private static MainGame game;
        
         internal static void RunGame()
         {
-            game = new MainGame();
+			game = new MainGame();
             game.Run();
         }
 
@@ -48,7 +48,7 @@ namespace devalpha.IOS
 				NSApplication.SharedApplication.Delegate = new AppDelegate();
 				NSApplication.Main(args);
 			}
-            #elif __IOS__
+			#elif __IOS__
 			UIApplication.Main(args, null, "AppDelegate");
             #else
             RunGame();

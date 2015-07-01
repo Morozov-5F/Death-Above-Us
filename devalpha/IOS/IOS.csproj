@@ -61,6 +61,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
+    <IpaPackageName>
+    </IpaPackageName>
+    <MtouchUseRefCounting>true</MtouchUseRefCounting>
+    <MtouchI18n>
+    </MtouchI18n>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -80,12 +85,6 @@
     <None Include="Info.plist" />
     <None Include="packages.config" />
     <None Include="Entitlements.plist" />
-    <None Include="..\Content\assets\bin\Windows\turrets\1\1.xnb">
-      <Link>Windows\turrets\1\1.xnb</Link>
-    </None>
-    <None Include="..\Content\assets\bin\Windows\turrets\1\2.xnb">
-      <Link>Windows\turrets\1\2.xnb</Link>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Default.png" />
@@ -101,47 +100,57 @@
   <Import Project="..\Content\Content.projitems" Label="Shared" Condition="Exists('..\Content\Content.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <Folder Include="Windows\" />
+    <Folder Include="Content\" />
+    <Folder Include="Content\fonts\" />
+    <Folder Include="Content\levels\" />
+    <Folder Include="Content\menu\" />
+    <Folder Include="Content\turrets\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="..\Content\assets\bin\Windows\menu\bg1.xnb">
-      <Link>Windows\menu\bg1.xnb</Link>
-    </Content>
     <Content Include="..\Content\assets\bin\Windows\fonts\menu_font.xnb">
-      <Link>Windows\fonts\menu_font.xnb</Link>
+      <Link>Content\fonts\menu_font.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\mountain.xnb">
-      <Link>Windows\levels\1\mountain.xnb</Link>
+      <Link>Content\levels\1\mountain.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\tree.xnb">
-      <Link>Windows\levels\1\tree.xnb</Link>
+      <Link>Content\levels\1\tree.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\tree1.xnb">
-      <Link>Windows\levels\1\tree1.xnb</Link>
+      <Link>Content\levels\1\tree1.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg0.xnb">
-      <Link>Windows\levels\1\background\bg0.xnb</Link>
+      <Link>Content\levels\1\background\bg0.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg1.xnb">
-      <Link>Windows\levels\1\background\bg1.xnb</Link>
+      <Link>Content\levels\1\background\bg1.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg2.xnb">
-      <Link>Windows\levels\1\background\bg2.xnb</Link>
+      <Link>Content\levels\1\background\bg2.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg3.xnb">
-      <Link>Windows\levels\1\background\bg3.xnb</Link>
+      <Link>Content\levels\1\background\bg3.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg4.xnb">
-      <Link>Windows\levels\1\background\bg4.xnb</Link>
+      <Link>Content\levels\1\background\bg4.xnb</Link>
     </Content>
-    <Content Include="..\Content\assets\bin\Windows\levels\1\background\ground.xnb">
-      <Link>Windows\levels\1\background\ground.xnb</Link>
+    <Content Include="..\Content\assets\bin\Windows\levels\1\background\bg5.xnb">
+      <Link>Content\levels\1\background\bg5.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg1.xnb">
+      <Link>Content\menu\bg1.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\menu\bg2.xnb">
-      <Link>Windows\menu\bg2.xnb</Link>
+      <Link>Content\menu\bg2.xnb</Link>
     </Content>
     <Content Include="..\Content\assets\bin\Windows\menu\logo.xnb">
-      <Link>Windows\menu\logo.xnb</Link>
+      <Link>Content\menu\logo.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\turrets\1\1.xnb">
+      <Link>Content\turrets\1\1.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\turrets\1\2.xnb">
+      <Link>Content\turrets\1\2.xnb</Link>
     </Content>
   </ItemGroup>
 </Project>
