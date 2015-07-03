@@ -8,14 +8,14 @@ namespace devalpha
     public class MenuBackground
     {
         // Speed
-        private const float backgroundScrollingSpeed    = 15f;
-        private const float skyMovementSpeed            = 0.2f;
+        private const float BACKGROUND_SCROLLING_SPEED    = 15f;
+        private const float SKY_MOVEMENT_SPEED            = 0.2f;
 
         // Background layers
-        private const int   bgLayersCount = 4;
+        private const int   BACKGROUND_LAYERS_COUNT = 4;
         private Texture2D[] bgTextures;
         // От дальнего слоя к ближнему
-        private float[]     bgDepths = {0.4f, 0.6f, 0.8f, 1f};
+        private float[]     bgDepths = {0.4f, 0.6f, 0.7f, 1f};
         private Vector2[]   bgPositions;
 
         // Sky
@@ -33,11 +33,11 @@ namespace devalpha
             public bool isActive;
         }
         // Максимальное количество снарядов на экране
-        private const int       projectilesCount = 5;
+        private const int       MAX_PROJECTILES_COUNT = 5;
         private Texture2D       projectileTexture;
         private Projectile[]    projectiles;
         // Задержка до создания следующего снаряда
-        private const float     projectileDelayMax = 2f;
+        private const float     MAX_PROJECTILE_DELAY = 2f;
         private float           projectileDelay;
 
         // Random generator
@@ -57,10 +57,10 @@ namespace devalpha
             skyTextures[1] = content.Load<Texture2D>(@"menu\sky2");
 
             // Background layers
-            bgTextures = new Texture2D[bgLayersCount];
-            bgPositions = new Vector2[bgLayersCount];
+            bgTextures = new Texture2D[BACKGROUND_LAYERS_COUNT];
+            bgPositions = new Vector2[BACKGROUND_LAYERS_COUNT];
 
-            for (int i = 0; i < bgLayersCount; ++i)
+            for (int i = 0; i < BACKGROUND_LAYERS_COUNT; ++i)
             {
                 string texturePath = @"menu\bg" + (i + 1).ToString();
                 bgTextures[i] = content.Load<Texture2D>(texturePath);
@@ -69,8 +69,8 @@ namespace devalpha
 
             // Projectile
             projectileTexture = content.Load<Texture2D>(@"menu\projectile");
-            projectiles = new Projectile[projectilesCount];
-            for (int i = 0; i < projectilesCount; i++)
+            projectiles = new Projectile[MAX_PROJECTILES_COUNT];
+            for (int i = 0; i < MAX_PROJECTILES_COUNT; i++)
             {
                 projectiles[i].position = Vector2.Zero;
                 projectiles[i].rotation = -(float) Math.PI / 4f;
@@ -90,7 +90,7 @@ namespace devalpha
             spriteBatch.Draw(skyTextures[0], skyPosition + new Vector2(0f, skyTextures[0].Height), null, null, Vector2.Zero, 0, null, Color.White, SpriteEffects.None, 0f); 
 
             // Projectiles            
-            for (int i = 0; i < projectilesCount; i++)
+            for (int i = 0; i < MAX_PROJECTILES_COUNT; i++)
             {
                 if (projectiles[i].isActive)
                 {
@@ -100,7 +100,7 @@ namespace devalpha
             }
 
             // Background layers
-            for (int i = 0; i < bgLayersCount; i++)
+            for (int i = 0; i < BACKGROUND_LAYERS_COUNT; i++)
             {
                 Vector2 layerPosition = bgPositions[i] - Camera.Position * Camera.GameScale;
                 spriteBatch.Draw(bgTextures[i], layerPosition,
@@ -115,16 +115,16 @@ namespace devalpha
         public void Update(float deltaTime)
         {
             // Sky
-            skyPosition -= new Vector2(0f, skyMovementSpeed);
+            skyPosition -= new Vector2(0f, SKY_MOVEMENT_SPEED);
             if (skyPosition.Y < -skyTextures[0].Height)
             {
                 skyPosition += new Vector2(0f, skyTextures[0].Height);
             }
 
             // Background layers
-            for (int i = 0; i < bgLayersCount; i++)
+            for (int i = 0; i < BACKGROUND_LAYERS_COUNT; i++)
             {
-                bgPositions[i] -= new Vector2(deltaTime * bgDepths[i] * backgroundScrollingSpeed, 0f);
+                bgPositions[i] -= new Vector2(deltaTime * bgDepths[i] * BACKGROUND_SCROLLING_SPEED, 0f);
                 if (bgPositions[i].X < -bgTextures[i].Width)
                 {
                     bgPositions[i] += new Vector2(bgTextures[i].Width, 0f);
@@ -133,7 +133,7 @@ namespace devalpha
 
             // Projectiles
             int newIndex = -1;
-            for (int i = 0; i < projectilesCount; i++)
+            for (int i = 0; i < MAX_PROJECTILES_COUNT; i++)
             {
                 if (projectiles[i].isActive)
                 {
@@ -154,7 +154,7 @@ namespace devalpha
             projectileDelay -= deltaTime;
             if (projectileDelay < 0 && newIndex >= 0)
             {
-                projectileDelay = projectileDelayMax * (float)random.NextDouble() + 0.01f;
+                projectileDelay = MAX_PROJECTILE_DELAY * (float)random.NextDouble() + 0.01f;
 
                 projectiles[newIndex].isActive = true;
                 float xOffsetRandom = ((float)random.NextDouble() - 0.2f) * bgTextures[0].Width * 0.5f;

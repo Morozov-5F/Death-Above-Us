@@ -14,47 +14,33 @@ using devalpha.Scenes;
 namespace devalpha.Scenes
 {
     public class MenuScene : Scene
-    {
-        private Vector2 backgroundScale;
-        private Vector2 skyPosition;
-
+    {  
         private SpriteFont menuFont;
-        private String[] menuButtons;
+        private Button[] menuButtons;
         private float menuButtonsOffset;
         private float menuButtonsSpace;
 
         private Texture2D logoTexture;
         private Vector2 logoScale;
 
-        private Button testButton;
-        int count;
-
         private MenuBackground background;
+
+        private string[] buttonsTexts = { @"Новая игра", @"Бесконечный режим", @"Настройки", @"Об игре" };
 
         public MenuScene(GraphicsDeviceManager graphics) : base(graphics)
         {
-            // Тестовые кнопки для красоты
-            menuButtons = new String[]{@"Новая игра", @"Бесконечный режим", @"Настройки", @"Об игре"};
-            for (int i = 0; i < menuButtons.Length; i++)
-            {
-                menuButtons[i] = menuButtons[i].ToUpper();
-            }
-
-            testButton = new Button();
-            testButton.Position = new Vector2(0f, 0f);
-            testButton.Size = new Vector2(110f, 30f);
-            testButton.setClickHandler(onClick);
-            testButton.Text = "testButton: 0";
-            count = 0;
-
             background = new MenuBackground();
         }
 
-
-        public void onClick()
+        public void onClick(Button button)
         {
-            count++;
-            testButton.Text = "testButton: " + count.ToString();
+            Debug.WriteLine("Pressed: " + button.Text);
+            switch (button.Text)
+            {
+                case @"Новая игра": // "Новая игра"
+                    MainGame.sceneManager.LoadScene(new LevelScene(graphics));
+                    break;
+            }
         }
 
         public override void LoadContent(ContentManager Content)
@@ -69,36 +55,30 @@ namespace devalpha.Scenes
             // Шрифт для кнопок меню
             menuFont = Content.Load<SpriteFont>("fonts/menu_font");
 
-            menuButtonsOffset = MainGame.screenSize.Y / 2f - ((menuFont.MeasureString(menuButtons[0]).Y + menuButtonsSpace) * menuButtons.Length - menuButtonsSpace) / 2f;
+            menuButtonsOffset = MainGame.screenSize.Y / 2f - ((menuFont.MeasureString(buttonsTexts[0]).Y + menuButtonsSpace) * buttonsTexts.Length - menuButtonsSpace) / 2f;
             menuButtonsSpace = 20f * Camera.GameScale;
-
-            testButton.Font = menuFont;
+            menuButtons = new Button[buttonsTexts.Length];
+            for (int i = 0; i < buttonsTexts.Length; i++)
+            {
+                menuButtons[i] = new Button(buttonsTexts[i], menuFont);
+                var buttonSize = menuFont.MeasureString(buttonsTexts[i]);
+                menuButtons[i].Position = new Vector2(MainGame.screenSize.X / 2f - buttonSize.X / 2f, menuButtonsOffset + (buttonSize.Y + menuButtonsSpace) * i);
+                menuButtons[i].Size = buttonSize;
+                menuButtons[i].setClickHandler(onClick);
+                menuButtons[i].Text = buttonsTexts[i];
+            }
         }
 
         public override void Update(GameTime gameTime)
         {
             float deltaTime = (float)gameTime.ElapsedGameTime.Milliseconds / 1000f;
             background.Update(deltaTime);
-            //testButton.Update(gameTime);
 
-            // Переход на следующий экран по клику
-			#if !__MOBILE__
-            var mouseState = Mouse.GetState();
-            if (mouseState.LeftButton == ButtonState.Pressed /*|| gameTime.TotalGameTime.Seconds >= 3*/)
+            // Кнопки меню
+            for (int i = 0; i < menuButtons.Length; i++)
             {
-                MainGame.sceneManager.LoadScene(new LevelScene(graphics));
-            }    
-			#endif
-			#if __MOBILE__
-			var gesture = default(GestureSample);
-
-			while (TouchPanel.IsGestureAvailable)
-				gesture = TouchPanel.ReadGesture();
-			if (gesture.GestureType == GestureType.Tap)
-			{
-				MainGame.sceneManager.LoadScene(new LevelScene(graphics));
-			}
-			#endif
+                menuButtons[i].Update(gameTime);
+            }
         }
 
         public override void Draw(SpriteBatch spriteBatch)
@@ -112,11 +92,8 @@ namespace devalpha.Scenes
             // Кнопки меню
             for (int i = 0; i < menuButtons.Length; i++)
             {
-                var buttonSize = menuFont.MeasureString(menuButtons[i]);
-                var buttonPos = new Vector2(MainGame.screenSize.X / 2f - buttonSize.X / 2f, menuButtonsOffset + (buttonSize.Y + menuButtonsSpace) * i);
-				spriteBatch.DrawString(menuFont, menuButtons[i], buttonPos, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
+                menuButtons[i].Draw(spriteBatch);
             }
-            //testButton.Draw(spriteBatch);
         }
     }
 }

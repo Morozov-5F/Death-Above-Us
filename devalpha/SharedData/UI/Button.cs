@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 using devalpha.Scenes;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Input.Touch;
 using devalpha;
 using System.Diagnostics;
 
@@ -14,7 +15,7 @@ namespace devalpha.UI
 {
     public class Button : ISprite
     {
-        protected Action    clickHandler;
+        protected Action<Button>    clickHandler;
         protected Rectangle boundsRectangle;
         protected float     rotation;
         protected Texture2D backgroundTexture;
@@ -28,12 +29,22 @@ namespace devalpha.UI
         public String     Text;
         public SpriteFont Font;
 
-        public Button()
+        public Color NormalColor;
+        public Color HoverColor;
+        public Color ClickColor;
+
+        public Button(String text, SpriteFont font)
         {
             state = "normal";
+            Text = text;
+            Font = font;
+
+            NormalColor = new Color(240, 240, 240);
+            HoverColor = new Color(255, 240, 0);
+            ClickColor = new Color(255, 255, 255);
         }
 
-        public void setClickHandler(Action handlerFunction)
+        public void setClickHandler(Action<Button> handlerFunction)
         {
             clickHandler = handlerFunction;
         }
@@ -44,33 +55,53 @@ namespace devalpha.UI
         }
 
         public void Draw(SpriteBatch spriteBatch)
-        {
-            var color = Color.White;
+        {           
+            var color = NormalColor;
             switch (state)
             {
                 case "hover":
-                    color = new Color(255, 0, 0);
+                    color = HoverColor;
                     break;
-                   
+
                 case "click":
-                    color = new Color(0, 255, 0);
+                    color = ClickColor;
                     break;
             }
             spriteBatch.DrawString(Font, Text, Position, color, Rotation, Vector2.Zero, 1, SpriteEffects.None, 0f);
         }
 
+
         public void Update(GameTime gameTime)
         {
+            // Клик или там
+            Point cursorPosition = Point.Zero;
+            bool isDown = false;
+
+            #if !__MOBILE__
             var mouseState = Mouse.GetState();
-            // TODO: Проверка клика, а не зажатия кнопки
-            if (boundsRectangle.Contains(mouseState.Position))
+            cursorPosition = new Point((int)(mouseState.Position.X * Camera.GameScale), (int) (mouseState.Position.Y * Camera.GameScale));
+            isDown = mouseState.LeftButton == ButtonState.Pressed; 
+            #endif
+
+            #if __MOBILE__
+            var gesture = default(GestureSample);
+            while (TouchPanel.IsGestureAvailable)
+            gesture = TouchPanel.ReadGesture();
+            if (gesture.GestureType == GestureType.Tap)
             {
-                if (mouseState.LeftButton == ButtonState.Pressed && clickHandler != null && state != "click")
+                cursorPosition = new Point((int)(gesture.Position.X * Camera.GameScale), (int) (gesture.Position.Y * Camera.GameScale));
+                isDown = true;
+            }
+            #endif
+
+            if (boundsRectangle.Contains(cursorPosition))
+            {
+                if (isDown && clickHandler != null && state != "click")
                 {
-                    clickHandler();
+                    clickHandler(this);
                     state = "click";
                 }
-                else if (mouseState.LeftButton != ButtonState.Pressed)
+                else if (!isDown)
                 {
                     state = "hover";
                 }
@@ -80,6 +111,5 @@ namespace devalpha.UI
                 state = "normal";
             }
         }
-            
     }
 }
