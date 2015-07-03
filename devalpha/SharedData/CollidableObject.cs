@@ -16,13 +16,15 @@ namespace devalpha
         protected float     rotation;
         protected Vector2   position;
         protected Texture2D texture;
-        protected Vector2   velocity;
+		protected Vector2   velocity;
+		protected BoundingSphere bounds;
         #endregion
 
         #region Properties
-        public float      Rotation { get { return this.rotation; } set { this.rotation = value; } }
-        public Vector2    Position { get { return this.position; } set { this.position = value; } }
-        public Texture2D  Texture  { get { return this.texture;  } }
+        public float          Rotation { get { return this.rotation; } set { this.rotation = value; } }
+        public Vector2        Position { get { return this.position; } set { this.position = value; } }
+        public Texture2D      Texture  { get { return this.texture;  } }
+		public BoundingSphere Bounds   { get { return this.bounds;   } }
         #endregion
 
         /// <summary>

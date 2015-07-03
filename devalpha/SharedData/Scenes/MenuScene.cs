@@ -86,7 +86,7 @@ namespace devalpha.Scenes
             var mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed /*|| gameTime.TotalGameTime.Seconds >= 3*/)
             {
-                //MainGame.sceneManager.LoadScene(new LevelScene(graphics));
+                MainGame.sceneManager.LoadScene(new LevelScene(graphics));
             }    
 			#endif
 			#if __MOBILE__

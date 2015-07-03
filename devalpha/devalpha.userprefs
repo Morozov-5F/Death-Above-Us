@@ -1,8 +1,13 @@
-﻿<Properties StartupItem="Windows\Windows.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.iPod Евгений Морозов" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="SharedData/MainGame.cs">
+﻿<Properties StartupItem="OSX/OSX.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="SharedData/Objects/Asteroid.cs">
     <Files>
-      <File FileName="SharedData/MainGame.cs" Line="29" Column="1" />
+      <File FileName="SharedData/MainGame.cs" Line="97" Column="4" />
+      <File FileName="SharedData/Objects/Asteroid.cs" Line="37" Column="64" />
+      <File FileName="SharedData/Objects/Turret.cs" Line="70" Column="1" />
+      <File FileName="SharedData/Scenes/LevelScene.cs" Line="51" Column="39" />
+      <File FileName="SharedData/CollidableObject.cs" Line="1" Column="14" />
+      <File FileName="SharedData/Background.cs" Line="18" Column="63" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

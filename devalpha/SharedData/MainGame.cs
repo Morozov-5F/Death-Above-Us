@@ -107,7 +107,7 @@ namespace devalpha
         protected override void Draw(GameTime gameTime)
         {
 			graphics.GraphicsDevice.Clear(Color.LightGray);
-            spriteBatch.Begin(SpriteSortMode.BackToFront, BlendState.AlphaBlend, null, null, null, null, Camera.TransformMatrix);
+            spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TransformMatrix);
             // Отрисовка сцены
 			sceneManager.Draw();
 			spriteBatch.End();
