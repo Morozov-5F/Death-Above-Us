@@ -3,6 +3,7 @@
 *.mgcontent
 
 # Unnecessary project files
+*.userprefs
 .DS_Store
 
 # Build results
@@ -16,4 +17,3 @@
 
 /**/bin/
 /**/obj/
-devalpha/devalpha.userprefs
