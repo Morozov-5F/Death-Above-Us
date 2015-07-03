@@ -16,8 +16,6 @@ namespace devalpha.Scenes
     public class MenuScene : Scene
     {
         private Vector2 backgroundScale;
-        private Texture2D background1;
-        private Texture2D background2;
         private Vector2 skyPosition;
 
         private SpriteFont menuFont;
@@ -30,6 +28,8 @@ namespace devalpha.Scenes
 
         private Button testButton;
         int count;
+
+        private MenuBackground background;
 
         public MenuScene(GraphicsDeviceManager graphics) : base(graphics)
         {
@@ -46,6 +46,8 @@ namespace devalpha.Scenes
             testButton.setClickHandler(onClick);
             testButton.Text = "testButton: 0";
             count = 0;
+
+            background = new MenuBackground();
         }
 
 
@@ -57,13 +59,8 @@ namespace devalpha.Scenes
 
         public override void LoadContent(ContentManager Content)
         {
-            // Фон меню
-            background1 = Content.Load<Texture2D>("menu/bg1");
-            background2 = Content.Load<Texture2D>("menu/bg2");
-            // Масштаб фона
-            backgroundScale = new Vector2(graphics.GraphicsDevice.Viewport.Height / (float) background1.Bounds.Height * Camera.GameScale);
-            // Позиция слоя с небом
-            skyPosition = Vector2.Zero;
+            // Фон
+            background.LoadContent(Content);
 
             // Логотип
             logoTexture = Content.Load<Texture2D>("menu/logo");
@@ -80,17 +77,16 @@ namespace devalpha.Scenes
 
         public override void Update(GameTime gameTime)
         {
-            testButton.Update(gameTime);
             float deltaTime = (float)gameTime.ElapsedGameTime.Milliseconds / 1000f;
-            // Движение слоя неба
-            skyPosition -= new Vector2(3f * deltaTime * Camera.GameScale);
+            background.Update(deltaTime);
+            //testButton.Update(gameTime);
 
             // Переход на следующий экран по клику
 			#if !__MOBILE__
             var mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed /*|| gameTime.TotalGameTime.Seconds >= 3*/)
             {
-                MainGame.sceneManager.LoadScene(new LevelScene(graphics));
+                //MainGame.sceneManager.LoadScene(new LevelScene(graphics));
             }    
 			#endif
 			#if __MOBILE__
@@ -108,11 +104,10 @@ namespace devalpha.Scenes
         public override void Draw(SpriteBatch spriteBatch)
         {
             // Фон
-            spriteBatch.Draw(background1, skyPosition, null, Color.White, 0, Vector2.Zero, backgroundScale * 2f, SpriteEffects.None, 1f);
-            spriteBatch.Draw(background2, Vector2.Zero, null, Color.White, 0, Vector2.Zero, backgroundScale, SpriteEffects.None, 1f);
+            background.Draw(spriteBatch);
 
             // Лого
-            spriteBatch.Draw(logoTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, logoScale, SpriteEffects.None, 1f);
+            spriteBatch.Draw(logoTexture, Vector2.Zero, null, Color.White, 0, Vector2.Zero, logoScale, SpriteEffects.None, 0f);
 
             // Кнопки меню
             for (int i = 0; i < menuButtons.Length; i++)
@@ -121,7 +116,7 @@ namespace devalpha.Scenes
                 var buttonPos = new Vector2(MainGame.screenSize.X / 2f - buttonSize.X / 2f, menuButtonsOffset + (buttonSize.Y + menuButtonsSpace) * i);
 				spriteBatch.DrawString(menuFont, menuButtons[i], buttonPos, Color.White, 0f, Vector2.Zero, 1, SpriteEffects.None, 0f);
             }
-            testButton.Draw(spriteBatch);
+            //testButton.Draw(spriteBatch);
         }
     }
 }

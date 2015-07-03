@@ -112,7 +112,27 @@
     </Content>
     <Content Include="..\Content\assets\bin\Windows\menu\logo.xnb">
       <Link>Content\menu\logo.xnb</Link>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg3.xnb">
+      <Link>Content\menu\bg3.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg4.xnb">
+      <Link>Content\menu\bg4.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\sky1.xnb">
+      <Link>Content\menu\sky1.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\sky2.xnb">
+      <Link>Content\menu\sky2.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\projectile.xnb">
+      <Link>Content\menu\projectile.xnb</Link>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿<Properties StartupItem="IOS/IOS.csproj">
+﻿<Properties StartupItem="Windows\Windows.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.iPod Евгений Морозов" />
   <MonoDevelop.Ide.Workbench ActiveDocument="SharedData/MainGame.cs">
     <Files>
