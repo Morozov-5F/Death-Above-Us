@@ -13,7 +13,11 @@
 [Bb]in/
 [Oo]bj/
 
+*.exe
+
 # Precautions 
 
 /**/bin/
 /**/obj/
+
+.settings/
