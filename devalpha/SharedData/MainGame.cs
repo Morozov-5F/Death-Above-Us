@@ -35,8 +35,8 @@ namespace devalpha
             graphics.IsFullScreen = true;	
 			#if !__MOBILE__
 			graphics.IsFullScreen = false;
-            graphics.PreferredBackBufferWidth = 1300;
-            graphics.PreferredBackBufferHeight = 650;
+            graphics.PreferredBackBufferWidth = 800;
+            graphics.PreferredBackBufferHeight = 600;
             IsMouseVisible = true;
 			#endif
 
