@@ -250,3 +250,20 @@
 /processorParam:TextureFormat=Color
 /build:asteroids/2.png
 
+#begin menu/main_menu_theme.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:menu/main_menu_theme.mp3
+
+#begin bullets/bullet1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:TextureFormat=Color
+/build:bullets/bullet1.png
+

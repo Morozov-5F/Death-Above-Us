@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 
+using devalpha.Weapons;
 
 using System.Diagnostics;
 
@@ -16,6 +17,7 @@ namespace devalpha.Objects
         private float     turretRotation;
         private Vector2   basePosition;
         private Vector2   turretOffset, baseOffset;
+        private Weapon    gun;
 
         private Texture2D baseTexture;
         private Texture2D turretTexture;
@@ -23,6 +25,7 @@ namespace devalpha.Objects
         public float      Rotation { get { return this.turretRotation; } set { this.turretRotation = value; } }
         public Vector2    Position { get { return this.basePosition; } set { this.basePosition = value; } }
         public Texture2D  Texture  { get { return this.baseTexture;  } }
+        public Weapon     Gun      { get { return this.gun; } }
 
         // TODO: bottom edge for turret
         public Vector2    BottomEdge { get {return basePosition + baseOffset; } }
@@ -51,6 +54,9 @@ namespace devalpha.Objects
 
             turretOffset = new Vector2(30f, 70f);
             baseOffset = new Vector2(52f, 0f);
+
+            gun = new DoubleBarelledWeapon(basePosition - new Vector2(13f, 5f) * Camera.GameScale, 16f, null);
+            gun.LoadContent(contentManager);
         }
 
         public void Update(GameTime time)
@@ -84,6 +90,9 @@ namespace devalpha.Objects
             {
                 turretRotation = -MAX_ROTATION;
             }
+                
+            Gun.Rotation = this.Rotation;
+            Gun.Update(time);
             Camera.Position = new Vector2(-MathHelper.ToDegrees(Math.Abs(turretRotation)) * Math.Sign(turretRotation), 0) / 2f;
         }
     }

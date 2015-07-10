@@ -78,6 +78,7 @@
     <Folder Include="Content\menu\" />
     <Folder Include="Content\turrets\" />
     <Folder Include="Content\asteroids\" />
+    <Folder Include="Content\bullets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Content\assets\bin\Windows\fonts\menu_font.xnb">
@@ -145,6 +146,18 @@
     </Content>
     <Content Include="..\Content\assets\bin\Windows\menu\sky2.xnb">
       <Link>Content\menu\sky2.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\main_menu_theme.xnb">
+      <Link>Content\menu\main_menu_theme.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\main_menu_theme.wma">
+      <Link>Content\menu\main_menu_theme.wma</Link>
+    </Content>
+    <Content Include="..\Content\assets\menu\main_menu_theme.mp3">
+      <Link>Content\menu\main_menu_theme.mp3</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\bullets\bullet1.xnb">
+      <Link>Content\bullets\bullet1.xnb</Link>
     </Content>
   </ItemGroup>
 </Project>

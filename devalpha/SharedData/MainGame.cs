@@ -35,13 +35,16 @@ namespace devalpha
             graphics.IsFullScreen = true;	
 			#if !__MOBILE__
 			graphics.IsFullScreen = false;
+<<<<<<< HEAD
             graphics.PreferredBackBufferWidth = 800;
             graphics.PreferredBackBufferHeight = 600;
+=======
+//            graphics.PreferredBackBufferWidth = 1300;
+//            graphics.PreferredBackBufferHeight = 650;
+>>>>>>> origin/master
             IsMouseVisible = true;
 			#endif
-
 			TouchPanel.EnabledGestures = GestureType.HorizontalDrag | GestureType.Tap;
-
             Debug.WriteLine("Touch panel gestures enabled: " + TouchPanel.EnabledGestures);
         }
 

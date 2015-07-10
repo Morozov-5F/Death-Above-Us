@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Input.Touch;
+using Microsoft.Xna.Framework.Media;
 
 using devalpha;
 using devalpha.UI;
@@ -22,6 +23,8 @@ namespace devalpha.Scenes
 
         private Texture2D logoTexture;
         private Vector2 logoScale;
+
+        private Song menuThemeSong;
 
         private MenuBackground background;
 
@@ -67,6 +70,10 @@ namespace devalpha.Scenes
                 menuButtons[i].setClickHandler(onClick);
                 menuButtons[i].Text = buttonsTexts[i];
             }
+
+//            menuThemeSong = Content.Load<Song>("menu/main_menu_theme");
+//            Microsoft.Xna.Framework.Media.MediaPlayer.Play(menuThemeSong);
+//            Microsoft.Xna.Framework.Media.MediaPlayer.IsRepeating = true;
         }
 
         public override void Update(GameTime gameTime)
