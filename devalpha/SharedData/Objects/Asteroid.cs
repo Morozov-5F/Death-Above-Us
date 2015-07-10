@@ -4,6 +4,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Content;
+using devalpha.Particles;
 
 namespace devalpha.Objects
 {
@@ -17,6 +18,8 @@ namespace devalpha.Objects
         private Color color;
         private Color [] AVAILIABLE_COLORS = { Color.White, Color.RosyBrown, Color.Gray, Color.DarkSeaGreen, Color.LightGray, 
             Color.BlanchedAlmond, Color.DarkGoldenrod};
+
+        private ParticlesEmitter particlesEmitter;
 
         public Asteroid (Texture2D texture, Vector2 position, Vector2 velocity, float layerDepth)
 		{   
@@ -35,6 +38,8 @@ namespace devalpha.Objects
             this.velocity *= new Vector2(1.0f / sizeScale.X, 1.0f / sizeScale.Y) * generator.Next(1, 4);
             int reverseRotation = generator.Next(0, 2);
             rotationSpeed = this.velocity.Length () * 0.01f * ((reverseRotation == 1) ? -1 : 1);
+
+            particlesEmitter = new ParticlesEmitter(typeof(FireParticle));
 		}
 
 		public override bool CheckCollision (CollidableObject obj)

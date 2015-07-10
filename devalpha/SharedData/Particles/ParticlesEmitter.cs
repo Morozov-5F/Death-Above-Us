@@ -1,64 +1,38 @@
 ﻿using System;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Storage;
+using Microsoft.Xna.Framework.Content;
+using System.Diagnostics;
 
 namespace devalpha.Particles
 {
-    public class ParticlesEmitter : ISprite
+    public class ParticlesEmitter
     {
-        public ParticlesEmitter()
-        {
-            
-        }
+        private Type particleType;
+        private Texture2D particleTexture;
 
-        #region ISprite implementation
-
-        public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+        public ParticlesEmitter(Type particleType)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Update(Microsoft.Xna.Framework.GameTime time)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void LoadContent(Microsoft.Xna.Framework.Content.ContentManager manager)
-        {
-            throw new NotImplementedException();
-        }
-
-        public float Rotation
-        {
-            get
+            if (particleType.IsAssignableFrom(typeof(Particle)))
             {
-                throw new NotImplementedException();
+                throw new Exception("Bad particle type");
             }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            this.particleType = particleType;
         }
 
-        public Microsoft.Xna.Framework.Vector2 Position
+        public void LoadContent(ContentManager Content)
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
-            set
-            {
-                throw new NotImplementedException();
-            }
+            String texturePath = (String)particleType.GetField("TexturePath").GetValue(null);
+            Console.WriteLine("texturePath: " + texturePath);
+            //Content.Load<Texture2D>(texturePath);
         }
 
-        public Microsoft.Xna.Framework.Graphics.Texture2D Texture
+        public Particle instantiateParticle()
         {
-            get
-            {
-                throw new NotImplementedException();
-            }
+            object[] args = {particleTexture};
+            return (Particle)Activator.CreateInstance(particleType, args);
         }
-
-        #endregion
     }
 }
 

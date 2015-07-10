@@ -15,10 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OSX", "OSX\OSX.csproj", "{0
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Content\Content.projitems*{7808c42e-f3a3-483c-87a4-7fe3a66dca16}*SharedItemsImports = 4
-		SharedData\SharedData.projitems*{7808c42e-f3a3-483c-87a4-7fe3a66dca16}*SharedItemsImports = 4
-		Content\Content.projitems*{8964e284-335b-4f89-bb56-9eca19adb0ca}*SharedItemsImports = 4
 		SharedData\SharedData.projitems*{8964e284-335b-4f89-bb56-9eca19adb0ca}*SharedItemsImports = 4
+		Content\Content.projitems*{8964e284-335b-4f89-bb56-9eca19adb0ca}*SharedItemsImports = 4
 		Content\Content.projitems*{ce60b0fa-f185-4e0b-a777-0899b7260739}*SharedItemsImports = 13
 		SharedData\SharedData.projitems*{27559075-4409-4c57-a19f-29a992576954}*SharedItemsImports = 13
 	EndGlobalSection
