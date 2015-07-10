@@ -67,8 +67,8 @@ namespace devalpha.Objects
 			// я не уверен, на то ли домножаю, но вроде верно
 			float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
-            Position += velocity * deltaTime * 10;
-            Rotation += rotationSpeed * deltaTime * 10;
+			Position += velocity;
+			Rotation += rotationSpeed;
 		}
 	}
 }

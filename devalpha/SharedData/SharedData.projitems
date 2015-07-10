@@ -23,14 +23,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\MenuScene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MenuBackground.cs" />
-<<<<<<< HEAD
     <Compile Include="$(MSBuildThisFileDirectory)Particles\ParticlesEmitter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Particles\Particle.cs" />
-=======
-    <Compile Include="$(MSBuildThisFileDirectory)Weapons\Weapon.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Weapons\Bullets\Bullet.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Weapons\DoubleBarelledWeapon.cs" />
->>>>>>> origin/master
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Objects\" />
@@ -38,7 +32,5 @@
     <Folder Include="$(MSBuildThisFileDirectory)Utils\Новая папка\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\" />
     <Folder Include="$(MSBuildThisFileDirectory)UI\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Weapons\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Weapons\Bullets\" />
   </ItemGroup>
 </Project>

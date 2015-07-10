@@ -23,7 +23,7 @@ namespace devalpha
         #region Properties
         public float          Rotation { get { return this.rotation; } set { this.rotation = value; } }
         public Vector2        Position { get { return this.position; } set { this.position = value; } }
-        public Texture2D      Texture  { get { return this.texture;  } set { this.texture = value; } }
+        public Texture2D      Texture  { get { return this.texture;  } }
 		public BoundingSphere Bounds   { get { return this.bounds;   } }
         #endregion
 

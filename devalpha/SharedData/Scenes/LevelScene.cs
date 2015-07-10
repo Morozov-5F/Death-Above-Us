@@ -8,8 +8,6 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 
 using devalpha.Objects;
-using devalpha.Weapons;
-using devalpha.Weapons.Bullets;
 
 namespace devalpha.Scenes
 {
@@ -21,9 +19,6 @@ namespace devalpha.Scenes
 
 		private Turret player;
 		private Background background;
-
-        private List<Bullet> bullets;
-
 		private List<Asteroid> asteroids;
 		private Texture2D[] asteroidTextures;
 
@@ -32,20 +27,15 @@ namespace devalpha.Scenes
             background = new Background(1);
             player = new Turret(new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height - 28 * Camera.DrawScale) * Camera.GameScale);
             //player.Scale = new Vector2(1f, 1f) * (graphics.GraphicsDevice.Viewport.Height / 2560f); 
-        	
-            // TODO: конфигурационный файл с количеством астероидов? 
+        	// TODO: конфигурационный файл с еоличеством астероидов? 
 			asteroidTextures = new Texture2D[2];
-			
-            asteroids = new List<Asteroid>();
-            bullets = new List<Bullet>();
+			asteroids = new List<Asteroid>();
 		}
 
         public override void LoadContent(ContentManager Content)
         {
             background.LoadContent(Content);
             player.LoadContent(Content);
-//            Чето не работает
-//            player.Gun.ShotMadeEvent += OnWeaponShot;
 			for (int i = 0; i < 2; ++i)
 			{
 				asteroidTextures[i] = Content.Load<Texture2D>(@"asteroids\" + (i + 1).ToString()); 
@@ -60,28 +50,11 @@ namespace devalpha.Scenes
 			var mouseState = Mouse.GetState();
             if (mouseState.RightButton == ButtonState.Pressed)
 			{
-//				SpawnAsteroids();
-               
+				SpawnAsteroids();
 			}
-            if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
-            {
-                List<Bullet> bulletsToAdd = player.Gun.CreateShot();
-                if (bulletsToAdd != null)
-                {
-                    foreach (var cb in bulletsToAdd)
-                    {
-                        bullets.Add(cb);
-                    }
-                }
-            }
 			#endif
-
             player.Update(gameTime);
-            foreach (var currentBullet   in bullets)
-            {
-                currentBullet.Update(gameTime);
-            }
-            foreach (var currentAsteroid in asteroids)
+			foreach (var currentAsteroid in asteroids)
 			{
 				currentAsteroid.Update(gameTime);
 			}
@@ -92,24 +65,11 @@ namespace devalpha.Scenes
             // Рисование фона
             background.Draw(spriteBatch);
 //             Рисование игрока
-            foreach (var currentBullet in bullets)
-            {
-                currentBullet.Draw(spriteBatch);
-            }
-            foreach (var currentAsteroid in asteroids)
+			foreach (var currentAsteroid in asteroids)
 			{
 				currentAsteroid.Draw(spriteBatch);
 			}
 			player.Draw(spriteBatch);
-        }
-
-        public void OnWeaponShot(object sender, BulletDataEventArgs args)
-        {
-            Debug.WriteLine("Получено пуль: " + args.bulletsToAdd.Count);
-            foreach (var cb in args.bulletsToAdd)
-            {
-                bullets.Add(cb);
-            }
         }
 
 		public void SpawnAsteroids()
