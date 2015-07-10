@@ -105,6 +105,7 @@
     <Folder Include="Content\levels\" />
     <Folder Include="Content\menu\" />
     <Folder Include="Content\turrets\" />
+    <Folder Include="Content\asteroids\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Content\assets\bin\Windows\fonts\menu_font.xnb">
@@ -151,6 +152,30 @@
     </Content>
     <Content Include="..\Content\assets\bin\Windows\turrets\1\2.xnb">
       <Link>Content\turrets\1\2.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg3.xnb">
+      <Link>Content\menu\bg3.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\bg4.xnb">
+      <Link>Content\menu\bg4.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\projectile.xnb">
+      <Link>Content\menu\projectile.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\sky1.xnb">
+      <Link>Content\menu\sky1.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\sky2.xnb">
+      <Link>Content\menu\sky2.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\asteroids\1.xnb">
+      <Link>Content\asteroids\1.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\asteroids\2.xnb">
+      <Link>Content\asteroids\2.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\menu\main_menu_theme.xnb">
+      <Link>Content\menu\main_menu_theme.xnb</Link>
     </Content>
   </ItemGroup>
 </Project>
