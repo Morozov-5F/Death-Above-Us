@@ -19,27 +19,28 @@ namespace devalpha.Objects
         private Color [] AVAILIABLE_COLORS = { Color.White, Color.RosyBrown, Color.Gray, Color.DarkSeaGreen, Color.LightGray, 
             Color.BlanchedAlmond, Color.DarkGoldenrod};
 
-        private ParticlesEmitter particlesEmitter;
+        private FireEmitter fireEmitter;
 
-        public Asteroid (Texture2D texture, Vector2 position, Vector2 velocity, float layerDepth)
-		{   
-			Random generator = new Random ();
+        public Asteroid (Texture2D texture, Vector2 position, Vector2 velocity, float layerDepth, Texture2D fireTexture)
+		{
+            Random generator = new Random((int)position.X);
 
 			this.texture = texture;
 			origin = new Vector2 (Texture.Width / 2, Texture.Height / 2);
             this.layerDepth = layerDepth;
             color = AVAILIABLE_COLORS[generator.Next(0, AVAILIABLE_COLORS.Length)];
 
-			rotation = 0f;
+            rotation = (float)(generator.NextDouble() * Math.PI);
 			Position = position;
 			this.velocity = Vector2.Normalize(velocity);
 
 			sizeScale = Vector2.One * generator.Next (1, 4) / 2;
-            this.velocity *= new Vector2(1.0f / sizeScale.X, 1.0f / sizeScale.Y) * generator.Next(1, 4);
+            this.velocity *= new Vector2(1.0f / sizeScale.X, 1.0f / sizeScale.Y) * generator.Next(10, 50);
             int reverseRotation = generator.Next(0, 2);
-            rotationSpeed = this.velocity.Length () * 0.01f * ((reverseRotation == 1) ? -1 : 1);
+            rotationSpeed = this.velocity.Length() * 0.01f * ((reverseRotation == 1) ? -1 : 1);
 
-            particlesEmitter = new ParticlesEmitter(typeof(FireParticle));
+            fireEmitter = new FireEmitter(fireTexture);
+            fireEmitter.Scale = sizeScale.X * 1.5f;
 		}
 
 		public override bool CheckCollision (CollidableObject obj)
@@ -49,7 +50,9 @@ namespace devalpha.Objects
 
 		public override void Draw (SpriteBatch spriteBatch)
 		{
-            spriteBatch.Draw (Texture, Position, null, null, origin, rotation, sizeScale, color, SpriteEffects.None, layerDepth);
+            fireEmitter.Draw(spriteBatch);
+            spriteBatch.Draw(Texture, Position, null, null, origin, rotation, sizeScale, color, SpriteEffects.None, layerDepth);
+            
 		}
 
 		public override void LoadContent (ContentManager contentManager)
@@ -66,9 +69,12 @@ namespace devalpha.Objects
 		{
 			// я не уверен, на то ли домножаю, но вроде верно
 			float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            
+            Position += velocity * deltaTime * 10f;
+            Rotation += rotationSpeed * deltaTime * 10f;
 
-            Position += velocity * deltaTime * 10;
-            Rotation += rotationSpeed * deltaTime * 10;
+            fireEmitter.Position = Position;
+            fireEmitter.Update(gameTime);
 		}
 	}
 }
