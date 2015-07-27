@@ -11,6 +11,7 @@ using devalpha.Objects;
 using devalpha.Weapons;
 using devalpha.Weapons.Bullets;
 using devalpha.Controllers;
+using devalpha.Particles;
 
 namespace devalpha.Scenes
 {
@@ -27,6 +28,10 @@ namespace devalpha.Scenes
 
 		private List<Asteroid> asteroids;
 		private Texture2D[] asteroidTextures;
+
+        private Texture2D fireTexture;
+
+        private FireEmitter fireEmitter;
 
         public LevelScene(GraphicsDeviceManager graphics) : base(graphics)
         {
@@ -55,6 +60,8 @@ namespace devalpha.Scenes
 			{
 				asteroidTextures[i] = Content.Load<Texture2D>(@"asteroids\" + (i + 1).ToString()); 
 			}
+            fireTexture = Content.Load<Texture2D>("particles/fire");
+            fireEmitter = new FireEmitter(fireTexture);
 			SpawnAsteroids();
         }
 
@@ -65,8 +72,7 @@ namespace devalpha.Scenes
 			var mouseState = Mouse.GetState();
             if (mouseState.RightButton == ButtonState.Pressed)
 			{
-    			SpawnAsteroids();
-               
+				SpawnAsteroids();
 			}
 //            if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
 //            {
@@ -159,7 +165,7 @@ namespace devalpha.Scenes
 					Camera.DeviceViewport.Height) * Camera.GameScale - position;
 				// Создаем астероид
 				var asteroidToAdd = new Asteroid(asteroidTextures[asteroidTextureNo], position, 
-					velocity, 0.3f);
+					velocity, 0.3f, fireTexture);
 				asteroids.Add(asteroidToAdd);
 			}
 		}
