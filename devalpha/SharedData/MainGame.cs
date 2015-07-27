@@ -39,7 +39,7 @@ namespace devalpha
 //            graphics.PreferredBackBufferHeight = 650;
             IsMouseVisible = true;
 			#endif
-			TouchPanel.EnabledGestures = GestureType.HorizontalDrag | GestureType.Tap;
+            TouchPanel.EnabledGestures = GestureType.HorizontalDrag | GestureType.Tap | GestureType.Hold;
             Debug.WriteLine("Touch panel gestures enabled: " + TouchPanel.EnabledGestures);
         }
 
@@ -106,7 +106,7 @@ namespace devalpha
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
-			graphics.GraphicsDevice.Clear(Color.LightGray);
+            graphics.GraphicsDevice.Clear(Color.DarkGray);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TransformMatrix);
             // Отрисовка сцены
 			sceneManager.Draw();

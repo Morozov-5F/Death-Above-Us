@@ -20,6 +20,8 @@ namespace devalpha.Objects
             Color.BlanchedAlmond, Color.DarkGoldenrod};
 
         private ParticlesEmitter particlesEmitter;
+        public Vector2 Scale { get { return sizeScale; } }
+        public Color   Color { get { return color; } set { color = value; } }
 
         public Asteroid (Texture2D texture, Vector2 position, Vector2 velocity, float layerDepth)
 		{   

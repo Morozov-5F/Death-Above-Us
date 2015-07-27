@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
 using devalpha.Weapons.Bullets;
+using System.Diagnostics;
 
 namespace devalpha.Weapons
 {
@@ -15,16 +16,19 @@ namespace devalpha.Weapons
     public class DoubleBarelledWeapon : Weapon
     {
         private float barrelOffset;
+        private float barellLength;
+        private Vector2 basePosition;
         private Texture2D bulletTexture;
 
-        public DoubleBarelledWeapon(Vector2 firstBarrelPositon, float offset, Bullet bulletType)
+        public DoubleBarelledWeapon(Vector2 middlePointPos, float barellOffset, float barellLength, Bullet bulletType)
         {
-            this.position = firstBarrelPositon;
-            this.barrelOffset = offset;
+            this.basePosition = middlePointPos;
+            this.barrelOffset = barellOffset;
+            this.barellLength = barellLength;
 
             this.bulletType = bulletType;
 
-            reloadTime = 100f;
+            reloadTime = 500f;
             reloadMeter = reloadTime;
         }
 
@@ -38,17 +42,14 @@ namespace devalpha.Weapons
             if (reloadMeter >= reloadTime)
             {
                 List<Bullet> bulletsToAdd = new List<Bullet>(2);
-                var bullet1 = new Bullet(this.position, rotation, bulletTexture);
-                var bullet2 = new Bullet(this.position + new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * barrelOffset, rotation, bulletTexture);
+                var multiplier = new Vector2((float)Math.Cos(rotation), (float)Math.Sin(rotation)) * barrelOffset / 2 * Camera.GameScale;
+                var bullet1 = new Bullet(this.position - multiplier, this.rotation, bulletTexture);
+                var bullet2 = new Bullet(this.position + multiplier, this.rotation, bulletTexture);
 
                 bulletsToAdd.Add(bullet1);
                 bulletsToAdd.Add(bullet2);
 
                 reloadMeter = 0;
-//                До сих пор чота не работает
-//                ShotMadeEventHandler handler = ShotMadeEvent;
-//                if (handler != null)
-//                    handler(this, eventArgs);
                 return bulletsToAdd;
             }
             else
@@ -63,6 +64,7 @@ namespace devalpha.Weapons
 
         public override void Update(GameTime time)
         {
+            this.position = basePosition + barellLength * new Vector2((float)Math.Sin(this.rotation), -(float)Math.Cos(this.rotation));
             reloadMeter += (float)time.ElapsedGameTime.TotalMilliseconds;
         }
     }

@@ -10,13 +10,14 @@ using Microsoft.Xna.Framework.Input;
 using devalpha.Objects;
 using devalpha.Weapons;
 using devalpha.Weapons.Bullets;
+using devalpha.Controllers;
 
 namespace devalpha.Scenes
 {
     public class LevelScene : Scene
     {
-		private const int MAX_ASTEROIDS_AT_SPAWN = 10;
-		private const int MIN_ASTEROIDS_AT_SPAWN = 1;
+		private const int MAX_ASTEROIDS_AT_SPAWN = 20;
+		private const int MIN_ASTEROIDS_AT_SPAWN = 10;
 		private const int ASTEROIDS_SPAWN_POINTS = 3;
 
 		private Turret player;
@@ -30,7 +31,9 @@ namespace devalpha.Scenes
         public LevelScene(GraphicsDeviceManager graphics) : base(graphics)
         {
             background = new Background(1);
-            player = new Turret(new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height - 28 * Camera.DrawScale) * Camera.GameScale);
+
+            ManualController controller = new ManualController(PlayerShotHandler);
+            player = new Turret(new Vector2(graphics.GraphicsDevice.Viewport.Width / 2, graphics.GraphicsDevice.Viewport.Height - 28 * Camera.DrawScale) * Camera.GameScale, controller);
             //player.Scale = new Vector2(1f, 1f) * (graphics.GraphicsDevice.Viewport.Height / 2560f); 
         	
             // TODO: конфигурационный файл с количеством астероидов? 
@@ -38,6 +41,8 @@ namespace devalpha.Scenes
 			
             asteroids = new List<Asteroid>();
             bullets = new List<Bullet>();
+
+
 		}
 
         public override void LoadContent(ContentManager Content)
@@ -60,26 +65,33 @@ namespace devalpha.Scenes
 			var mouseState = Mouse.GetState();
             if (mouseState.RightButton == ButtonState.Pressed)
 			{
-//				SpawnAsteroids();
+    			SpawnAsteroids();
                
 			}
-            if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
-            {
-                List<Bullet> bulletsToAdd = player.Gun.CreateShot();
-                if (bulletsToAdd != null)
-                {
-                    foreach (var cb in bulletsToAdd)
-                    {
-                        bullets.Add(cb);
-                    }
-                }
-            }
+//            if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
+//            {
+//                List<Bullet> bulletsToAdd = player.Gun.CreateShot();
+//                if (bulletsToAdd != null)
+//                {
+//                    foreach (var cb in bulletsToAdd)
+//                    {
+//                        bullets.Add(cb);
+//                    }
+//                }
+//            }
 			#endif
 
             player.Update(gameTime);
             foreach (var currentBullet   in bullets)
             {
                 currentBullet.Update(gameTime);
+                foreach (var currentAsteroid in asteroids)
+                {
+                    if (currentBullet.CheckCollision(currentAsteroid))
+                    {
+                        Debug.WriteLine("Collision detected");
+                    }
+                }
             }
             foreach (var currentAsteroid in asteroids)
 			{
@@ -90,7 +102,7 @@ namespace devalpha.Scenes
         public override void Draw(SpriteBatch spriteBatch)
         {
             // Рисование фона
-            background.Draw(spriteBatch);
+//            background.Draw(spriteBatch);
 //             Рисование игрока
             foreach (var currentBullet in bullets)
             {
@@ -109,6 +121,18 @@ namespace devalpha.Scenes
             foreach (var cb in args.bulletsToAdd)
             {
                 bullets.Add(cb);
+            }
+        }
+
+        private void PlayerShotHandler(List<Bullet> bulletsToAdd)
+        {
+            if (bulletsToAdd != null)
+            {
+                Debug.WriteLine("Получено пуль: " + bulletsToAdd.Count);
+                foreach (var cb in bulletsToAdd)
+                {
+                    bullets.Add(cb);
+                }
             }
         }
 
