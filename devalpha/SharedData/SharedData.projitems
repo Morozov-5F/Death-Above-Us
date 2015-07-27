@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Asteroid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Turret.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Particles\FireParticle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\SceneManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cs" />
@@ -22,6 +23,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\MenuScene.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\Button.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MenuBackground.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Particles\ParticlesEmitter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Particles\Particle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Weapons\Weapon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Weapons\Bullets\Bullet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Weapons\DoubleBarelledWeapon.cs" />
