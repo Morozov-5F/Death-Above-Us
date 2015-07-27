@@ -22,8 +22,6 @@ namespace devalpha.Weapons
 
         public float Rotation { get { return this.rotation; } set { this.rotation = value;} }
 
-        public event ShotMadeEventHandler ShotMadeEvent;
-
         /// <summary>
         /// Loads the content for bullets
         /// </summary>

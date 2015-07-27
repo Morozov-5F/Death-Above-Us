@@ -25,14 +25,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Weapons\Weapon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Weapons\Bullets\Bullet.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Weapons\DoubleBarelledWeapon.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\ITurretController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controllers\ManualController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Objects\" />
     <Folder Include="$(MSBuildThisFileDirectory)Utils\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Utils\Новая папка\" />
     <Folder Include="$(MSBuildThisFileDirectory)Scenes\" />
     <Folder Include="$(MSBuildThisFileDirectory)UI\" />
     <Folder Include="$(MSBuildThisFileDirectory)Weapons\" />
     <Folder Include="$(MSBuildThisFileDirectory)Weapons\Bullets\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Controllers\" />
   </ItemGroup>
 </Project>

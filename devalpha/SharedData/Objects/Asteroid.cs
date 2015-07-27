@@ -18,6 +18,9 @@ namespace devalpha.Objects
         private Color [] AVAILIABLE_COLORS = { Color.White, Color.RosyBrown, Color.Gray, Color.DarkSeaGreen, Color.LightGray, 
             Color.BlanchedAlmond, Color.DarkGoldenrod};
 
+        public Vector2 Scale { get { return sizeScale; } }
+        public Color   Color { get { return color; } set { color = value; } }
+
         public Asteroid (Texture2D texture, Vector2 position, Vector2 velocity, float layerDepth)
 		{   
 			Random generator = new Random ();

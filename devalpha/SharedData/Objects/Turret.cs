@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 
 using devalpha.Weapons;
+using devalpha.Controllers;
 
 using System.Diagnostics;
 
@@ -19,6 +20,8 @@ namespace devalpha.Objects
         private Vector2   turretOffset, baseOffset;
         private Weapon    gun;
 
+        private ITurretController controller;
+
         private Texture2D baseTexture;
         private Texture2D turretTexture;
 
@@ -26,17 +29,27 @@ namespace devalpha.Objects
         public Vector2    Position { get { return this.basePosition; } set { this.basePosition = value; } }
         public Texture2D  Texture  { get { return this.baseTexture;  } }
         public Weapon     Gun      { get { return this.gun; } }
+        
+        public Vector2 GunPosition 
+        {
+            get 
+            {
+                return Position;
+            }
+        }
 
         // TODO: bottom edge for turret
         public Vector2    BottomEdge { get {return basePosition + baseOffset; } }
 
         public const float MAX_ROTATION = (float)Math.PI / 2.5f;
-        private float prevMouseX;
 
-        public Turret(Vector2 position)
+        public Turret(Vector2 position, ITurretController controller)
         {
             Debug.WriteLine("Object turret is being constructed");
             basePosition = position;
+
+            this.controller = controller;
+            this.controller.ControllableTurret = this;
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -55,46 +68,16 @@ namespace devalpha.Objects
             turretOffset = new Vector2(30f, 70f);
             baseOffset = new Vector2(52f, 0f);
 
-            gun = new DoubleBarelledWeapon(basePosition - new Vector2(13f, 5f) * Camera.GameScale, 16f, null);
+            gun = new DoubleBarelledWeapon(GunPosition, 14f, 70f, null);
             gun.LoadContent(contentManager);
         }
 
         public void Update(GameTime time)
         {
-            // Управление жестами
-			#if __MOBILE__
-            var gesture = default(GestureSample);
-
-            while (TouchPanel.IsGestureAvailable)
-                gesture = TouchPanel.ReadGesture();
-            if (gesture.GestureType == GestureType.HorizontalDrag)
-            {
-                turretRotation += MathHelper.ToRadians(gesture.Delta.X / 1.3f);
-            }
-			#endif
-            // Управление мышью
-			#if !__MOBILE__
-            var mouseState = Mouse.GetState();
-            if (mouseState.LeftButton == ButtonState.Pressed)
-            {
-                turretRotation += MathHelper.ToRadians((mouseState.Position.X - prevMouseX) / 1.3f);
-            }
-            prevMouseX = mouseState.Position.X;
-			#endif
-            // Ограничение поворота
-            if (turretRotation > MAX_ROTATION)
-            {
-                turretRotation = MAX_ROTATION;
-            }
-            if (turretRotation < -MAX_ROTATION)
-            {
-                turretRotation = -MAX_ROTATION;
-            }
-                
+            controller.Update(time);
+           
             Gun.Rotation = this.Rotation;
             Gun.Update(time);
-            Camera.Position = new Vector2(-MathHelper.ToDegrees(Math.Abs(turretRotation)) * Math.Sign(turretRotation), 0) / 2f;
         }
     }
 }
-
