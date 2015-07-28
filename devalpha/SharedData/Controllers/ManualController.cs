@@ -39,7 +39,7 @@ namespace devalpha.Controllers
                 {
                     if (tl.State == TouchLocationState.Moved)
                     {
-                        turret.Rotation += MathHelper.ToRadians(tl.Position.X - prevMouseX) / 1.3f;
+                        turret.Rotation += MathHelper.ToRadians((tl.Position.X - prevMouseX) / 1.3f) * (float)time.ElapsedGameTime.TotalSeconds * 25;
                     }
                     prevMouseX = tl.Position.X;
                 }
@@ -54,7 +54,7 @@ namespace devalpha.Controllers
             var mouseState = Mouse.GetState();
             if (mouseState.LeftButton == ButtonState.Pressed)
             {
-                turret.Rotation += MathHelper.ToRadians((mouseState.Position.X - prevMouseX) / 1.3f);
+                turret.Rotation += MathHelper.ToRadians((mouseState.Position.X - prevMouseX) / 1.3f) * (float)time.ElapsedGameTime.TotalSeconds * 25;
             }
             prevMouseX = mouseState.Position.X;
 
