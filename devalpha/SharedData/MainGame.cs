@@ -25,7 +25,11 @@ namespace devalpha
 
         public static SceneManager sceneManager;
         public static Vector2 screenSize;
-	
+        #if __MOBILE__ || DEBUG
+        private SpriteFont debugFont;
+        private int frameRate = 0, frameCounter = 0;
+        private TimeSpan elapsedTime;
+        #endif
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -69,7 +73,9 @@ namespace devalpha
 		{
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
+            #if __MOBILE__ || DEBUG
+            debugFont = Content.Load<SpriteFont>("fonts/menu_font");
+            #endif
             //TODO: Загрузка контента, который потребуется во всей игре
 			
             // Создание SceneManager'а
@@ -86,6 +92,16 @@ namespace devalpha
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
+            #if __MOBILE__ || DEBUG
+            elapsedTime += gameTime.ElapsedGameTime;
+
+            if (elapsedTime > TimeSpan.FromSeconds(1))
+            {
+                elapsedTime -= TimeSpan.FromSeconds(1);
+                frameRate = frameCounter;
+                frameCounter = 0;
+            }
+            #endif
             // For Mobile devices, this logic will close the Game when the Back button is pressed
             // Exit() is obsolete on iOS
             #if !__IOS__
@@ -106,11 +122,17 @@ namespace devalpha
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            #if __MOBILE__ || DEBUG
+            frameCounter++;
+            #endif
             graphics.GraphicsDevice.Clear(Color.DarkGray);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, Camera.TransformMatrix);
             // Отрисовка сцены
 			sceneManager.Draw();
-			spriteBatch.End();
+            #if __MOBILE__ || DEBUG
+            spriteBatch.DrawString(debugFont, String.Format("FPS: {0}", frameRate), -Camera.Position * Camera.GameScale, (frameRate > 30) ? Color.Green : Color.Red);
+            #endif
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

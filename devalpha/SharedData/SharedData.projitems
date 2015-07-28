@@ -15,7 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)MainGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Asteroid.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Objects\Turret.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Particles\FireParticle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utils\Camera.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\SceneManager.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Scenes\Scene.cs" />
@@ -30,6 +29,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Weapons\DoubleBarelledWeapon.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ITurretController.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controllers\ManualController.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Particles\FireEmitter.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Objects\" />

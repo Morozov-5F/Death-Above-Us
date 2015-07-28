@@ -80,7 +80,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game1.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -110,6 +109,7 @@
     <Folder Include="Content\turrets\" />
     <Folder Include="Content\asteroids\" />
     <Folder Include="Content\bullets\" />
+    <Folder Include="Content\particles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="..\Content\assets\bin\Windows\fonts\menu_font.xnb">
@@ -183,6 +183,9 @@
     </Content>
     <Content Include="..\Content\assets\bin\Windows\bullets\bullet1.xnb">
       <Link>Content\bullets\bullet1.xnb</Link>
+    </Content>
+    <Content Include="..\Content\assets\bin\Windows\particles\fire.xnb">
+      <Link>Content\particles\fire.xnb</Link>
     </Content>
   </ItemGroup>
 </Project>

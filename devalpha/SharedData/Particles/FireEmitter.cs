@@ -23,7 +23,7 @@ namespace devalpha.Particles
             var particle = base.InstantiateParticle();
             particle.Velocity = new Vector2((float)random.NextDouble() * MAX_VELOCITY - MAX_VELOCITY / 2, (float)random.NextDouble() * MAX_VELOCITY - MAX_VELOCITY/2);
             particle.targetColor = new Color(Color.White, 0);
-            particle.maxLifeTime = 0.5f;
+            particle.maxLifeTime = 0.2f;
             particle.Rotation = (float)random.NextDouble() * 3f;
             particle.rotationSpeed = ((float)random.NextDouble() - 0.5f) * 0f;
             //particle.Position += new Vector2((float)random.NextDouble() * MAX_RANGE - MAX_VELOCITY / 2, (float)random.NextDouble() * MAX_RANGE - MAX_VELOCITY / 2);

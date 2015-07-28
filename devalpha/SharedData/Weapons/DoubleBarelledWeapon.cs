@@ -28,7 +28,7 @@ namespace devalpha.Weapons
 
             this.bulletType = bulletType;
 
-            reloadTime = 500f;
+            reloadTime = 300f;
             reloadMeter = reloadTime;
         }
 

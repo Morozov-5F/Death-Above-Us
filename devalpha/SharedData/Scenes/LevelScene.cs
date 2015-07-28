@@ -17,9 +17,9 @@ namespace devalpha.Scenes
 {
     public class LevelScene : Scene
     {
-		private const int MAX_ASTEROIDS_AT_SPAWN = 20;
-		private const int MIN_ASTEROIDS_AT_SPAWN = 10;
-		private const int ASTEROIDS_SPAWN_POINTS = 3;
+		private const int MAX_ASTEROIDS_AT_SPAWN = 10;
+		private const int MIN_ASTEROIDS_AT_SPAWN = 4;
+        private const int ASTEROIDS_SPAWN_POINTS = 3;
 
 		private Turret player;
 		private Background background;
@@ -46,8 +46,6 @@ namespace devalpha.Scenes
 			
             asteroids = new List<Asteroid>();
             bullets = new List<Bullet>();
-
-
 		}
 
         public override void LoadContent(ContentManager Content)
@@ -62,6 +60,7 @@ namespace devalpha.Scenes
 			}
             fireTexture = Content.Load<Texture2D>("particles/fire");
             fireEmitter = new FireEmitter(fireTexture);
+
 			SpawnAsteroids();
         }
 
@@ -74,41 +73,31 @@ namespace devalpha.Scenes
 			{
 				SpawnAsteroids();
 			}
-//            if (Keyboard.GetState(PlayerIndex.One).IsKeyDown(Keys.Space))
-//            {
-//                List<Bullet> bulletsToAdd = player.Gun.CreateShot();
-//                if (bulletsToAdd != null)
-//                {
-//                    foreach (var cb in bulletsToAdd)
-//                    {
-//                        bullets.Add(cb);
-//                    }
-//                }
-//            }
 			#endif
 
             player.Update(gameTime);
             foreach (var currentBullet   in bullets)
             {
                 currentBullet.Update(gameTime);
-                foreach (var currentAsteroid in asteroids)
-                {
-                    if (currentBullet.CheckCollision(currentAsteroid))
-                    {
-                        Debug.WriteLine("Collision detected");
-                    }
-                }
+//                foreach (var currentAsteroid in asteroids)
+//                {
+//                    if (currentBullet.CheckCollision(currentAsteroid))
+//                    {
+//                        Debug.WriteLine("Collision detected");
+//                    }
+//                }
             }
             foreach (var currentAsteroid in asteroids)
 			{
 				currentAsteroid.Update(gameTime);
 			}
+                
         }
 
         public override void Draw(SpriteBatch spriteBatch)
         {
             // Рисование фона
-//            background.Draw(spriteBatch);
+            background.Draw(spriteBatch);
 //             Рисование игрока
             foreach (var currentBullet in bullets)
             {

@@ -14,7 +14,7 @@ using UIKit;
 #endregion
 
 using devalpha;
-using IOS;
+//using IOS;
 namespace devalpha.IOS
 {
     #if __IOS__
