@@ -1,17 +1,27 @@
-package Screens;
+package screens;
+import openfl.display.Sprite;
 import openfl.display.DisplayObjectContainer;
 
 /**
  * ...
  * @author Evgeniy Morozov
  */
-abstract class Screen extends Sprite
+class Screen extends Sprite
 {
 	private var guiContainer:DisplayObjectContainer;
 	private var backgroundContainer:DisplayObjectContainer;
 	
-	abstract public function load() : Bool;
-	abstract public function unload() : Bool;
+	public function load():Bool
+	{
+		return false;
+	}
+	public function unload():Bool
+	{
+		return false;
+	}
 
-	abstract public function update(dt:Float) : Void;
+	public function update(dt:Float):Void
+	{
+		
+	}
 }
