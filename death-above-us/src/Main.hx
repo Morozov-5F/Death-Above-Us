@@ -1,8 +1,14 @@
 package;
 
+import controllers.ManualController;
+import objects.Turret;
 import openfl.display.DisplayObjectContainer;
 import openfl.display.MovieClip;
+import openfl.events.KeyboardEvent;
 import openfl.events.MouseEvent;
+import openfl.events.TouchEvent;
+import openfl.geom.Point;
+import openfl.ui.Keyboard;
 import openfl.ui.Mouse;
 import openfl.Vector;
 
@@ -19,19 +25,20 @@ import openfl.Assets;
 class Main extends Sprite 
 {
 	private var prevPointerPosition:Float;
-	private var testContainer:DisplayObjectContainer;
-	private var bcgrd: GameBackground;
+	private var turret:Turret;
 	
-	private var mouseDown: Bool;
+	public static var mouseDown: Bool;
+	public static var keys     : Vector<Bool>;
+	
+	private var prevTick:Float;
 	
 	public function new() 
 	{
 		super();
-		
-		testContainer = new DisplayObjectContainer();
-		bcgrd = new GameBackground();
-		
 		prevPointerPosition = 0;
+		mouseDown = false;
+		keys = new Vector<Bool>(101, true);
+		prevTick = 0;
 		
 		this.addEventListener(Event.ADDED_TO_STAGE, initialize);
 	}
@@ -40,35 +47,43 @@ class Main extends Sprite
 	{
 		removeEventListener(Event.ADDED_TO_STAGE, initialize);
 		trace("Stage parameters: " + Lib.current.stage.stageWidth + "x" + Lib.current.stage.stageHeight);
-		
+	
+		Utils.gameScale = stage.stageHeight / 900;
 		Utils.cameraPosX = 0;
-		Utils.gameScale = Lib.current.stage.stageHeight / 900.0;	
-		
-		if (!bcgrd.load("1"))
-		{
-			trace("ERROR");
-		}
-		addChild(testContainer);
-		testContainer.addChild(bcgrd);
-		
-		addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
-		addEventListener(MouseEvent.MOUSE_UP,  onMouseUp);
+		var controller:ManualController = new ManualController(true);
+		turret = new Turret(new Point(stage.stageWidth / 2, stage.stageHeight), controller);
+		addChild(turret);
+		#if mobile
+		stage.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchBegin);
+		stage.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
+		#else
+		stage.addEventListener(MouseEvent.MOUSE_DOWN, onMouseDown);
+		stage.addEventListener(MouseEvent.MOUSE_UP,  onMouseUp);
+		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
+		stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
+		#end
 		addEventListener(Event.ENTER_FRAME, update);
 	}
 	
-	private function update(e:Event):Void 
+
+	#if mobile	
+	private function onTouchBegin(e:TouchEvent):Void 
 	{
-		if (mouseDown)
-		{
-			Utils.cameraPosX += (Lib.current.stage.mouseX - prevPointerPosition );
-			if (Math.abs(Utils.cameraPosX) >= 90)
-			{
-				Utils.cameraPosX = (Math.abs(Utils.cameraPosX) / Utils.cameraPosX) * 90;
-			}
-		}
-		bcgrd.update(0);
-		trace("Camera position: " + Utils.cameraPosX);
-		prevPointerPosition = Lib.current.stage.mouseX;
+		
+	}	
+	private function onTouchEnd(e:TouchEvent):Void 
+	{
+		
+	}
+	#else
+	private function onKeyUp(e:KeyboardEvent):Void 
+	{
+		keys[e.keyCode] = false;
+	}
+	
+	private function onKeyDown(e:KeyboardEvent):Void 
+	{
+		keys[e.keyCode] = true;
 	}
 	
 	private function onMouseUp(e:MouseEvent):Void 
@@ -79,6 +94,16 @@ class Main extends Sprite
 	private function onMouseDown(e:MouseEvent):Void 
 	{
 		mouseDown = true;
+	}
+	#end
+	
+	private function update(e:Event):Void 
+	{
+		var currentTick = Lib.getTimer();
+		var deltaTime = (currentTick - prevTick) / 1000;
+		prevTick = currentTick;
+		
+		turret.update(deltaTime);
 	}
 	
 }
