@@ -43,6 +43,7 @@ class Turret extends Sprite
 		gunSprite.addChild(gunTexture);
 		addChild(gunSprite);
 		
+		// Нужен ли тут localToGlobal? 
 		var globalCoordinates = localToGlobal(position);
 		x = globalCoordinates.x;
 		y = globalCoordinates.y;

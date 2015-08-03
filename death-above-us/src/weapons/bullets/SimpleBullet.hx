@@ -23,8 +23,9 @@ class SimpleBullet extends BaseBullet
 		x = position.x;
 		y = position.y;
 		
-		this.velocity = velocity;
+		damage = 5;
 		
+		this.velocity = velocity;
 		scaleX = scaleY = Utils.gameScale;
 	}
 	

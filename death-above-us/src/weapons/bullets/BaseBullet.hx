@@ -9,5 +9,6 @@ import openfl.display.Sprite;
 class BaseBullet extends Sprite
 {
 	public var velocity:Float;
+	public var damage:Float;
 	public function update(deltaTime: Float) : Void {}
 }

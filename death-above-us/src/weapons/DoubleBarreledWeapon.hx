@@ -46,10 +46,7 @@ class DoubleBarreledWeapon extends BaseWeapon
 		
 		bulletsToAdd[0] = Type.createInstance(bulletType, [offsetLeft,  BULLET_SPEED, rotation]);
 		bulletsToAdd[1] = Type.createInstance(bulletType, [offsetRight, BULLET_SPEED, rotation]);
-		//
-		//bulletsToAdd[0] = new bulletType(offsetLeft,  30, rotation);
-		//bulletsToAdd[1] = new bulletType(offsetRight, 30, rotation);
-		// TODO: bulletMaking
+	
 		reloadMeter = 0;
 		dispatchEvent(new WeaponShotEvent(WeaponShotEvent.WEAPON_SHOT, false, false, bulletsToAdd));
 	}
