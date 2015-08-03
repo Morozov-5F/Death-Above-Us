@@ -10,7 +10,7 @@ import openfl.geom.Point;
 class SimpleBullet extends BaseBullet
 {
 	
-	public function new(postion:Point, velocity:Point, rotation:Float) 
+	public function new(position:Point, velocity:Float, rotation:Float) 
 	{
 		super();
 		var bulletTexture = new Bitmap(Assets.getBitmapData("img/bullets/simpleBullet.png"));
@@ -20,12 +20,10 @@ class SimpleBullet extends BaseBullet
 		
 		this.rotation = rotation;
 		
-		var pos = localToGlobal(postion);
-		x = pos.x;
-		y = pos.y;
+		x = position.x;
+		y = position.y;
 		
-		sx = velocity.x;
-		sy = velocity.y;
+		this.velocity = velocity;
 		
 		scaleX = scaleY = Utils.gameScale;
 	}
@@ -34,8 +32,8 @@ class SimpleBullet extends BaseBullet
 	{
 		super.update(deltaTime);
 		
-		x += sx * deltaTime * Math.sin(Utils.DEG_TO_RAD * rotation);
-		y -= sy * deltaTime * Math.cos(Utils.DEG_TO_RAD * rotation);
+		x += velocity * deltaTime * Math.sin(Utils.DEG_TO_RAD * rotation);
+		y -= velocity * deltaTime * Math.cos(Utils.DEG_TO_RAD * rotation);
 	}
 	
 }

@@ -14,7 +14,7 @@ import openfl.ui.Mouse;
 import openfl.Vector;
 import weapons.BaseWeapon.WeaponShotEvent;
 import weapons.bullets.BaseBullet;
-import weapons.DoubleBarelledWeapon;
+import weapons.DoubleBarreledWeapon;
 import openfl.Assets;
 import openfl.display.Bitmap;
 import openfl.display.DisplayObjectContainer;
@@ -49,9 +49,10 @@ class GameScreen extends Screen
 		Utils.gameScale = stage.stageHeight / 900;
 		Utils.cameraPosX = 0;
 		var controller:ManualController = new ManualController(true);
-		turret = new Turret(new Point(stage.stageWidth / 2, stage.stageHeight), DoubleBarelledWeapon ,controller);
+		turret = new Turret(new Point(stage.stageWidth / 2, stage.stageHeight), DoubleBarreledWeapon ,controller);
 		addChild(turret);
 		turret.weapon.addEventListener(WeaponShotEvent.WEAPON_SHOT, onShot);
+		
 		#if mobile
 		stage.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchBegin);
 		stage.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
@@ -61,12 +62,12 @@ class GameScreen extends Screen
 		stage.addEventListener(KeyboardEvent.KEY_DOWN, onKeyDown);
 		stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 		#end
+		
 		return true;
 	}
 	
 	private function onShot(e:WeaponShotEvent):Void 
 	{
-		trace(e.bullets);
 		for (i in 0 ... e.bullets.length)
 		{
 			bullets.push(e.bullets[i]);
@@ -114,10 +115,22 @@ class GameScreen extends Screen
 	override public function update(deltaTime:Float):Void 
 	{	
 		turret.update(deltaTime);
-		
+		trace(bullets.length);
 		for (cB in bullets)
 		{
+			if (cB == null)
+			{
+				continue;
+			}
 			cB.update(deltaTime);
+			// Проверка на то, что пуля ушла куда-то за экран.
+			// Пока только верх экрана и боковые стороны. Вряд ли будет 
+			// возможность стрелять вниз
+			if (cB.x > stage.stageWidth + cB.width ||
+				cB.y < -cB.height || cB.x < -cB.width)
+			{
+				bullets.splice(bullets.indexOf(cB), 1);
+			}
 		}	
 	}
 }

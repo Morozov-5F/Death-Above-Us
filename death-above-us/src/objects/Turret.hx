@@ -7,7 +7,7 @@ import openfl.display.Sprite;
 import openfl.geom.Point;
 import weapons.bullets.BaseBullet;
 import weapons.bullets.SimpleBullet;
-import weapons.DoubleBarelledWeapon;
+import weapons.DoubleBarreledWeapon;
 
 import weapons.BaseWeapon;
 import controllers.IController;
@@ -56,9 +56,9 @@ class Turret extends Sprite
 		}
 		
 		// TODO: разобраться нормально с этими классами
-		if (weaponType == DoubleBarelledWeapon)
+		if (weaponType == DoubleBarreledWeapon)
 		{
-			this.weapon = new DoubleBarelledWeapon(new Point(x, y - baseTexture.height * scaleY), 14, SimpleBullet);
+			this.weapon = new DoubleBarreledWeapon(new Point(x, y - baseTexture.height * scaleY), 14, SimpleBullet);
 		}
 	}
 	
