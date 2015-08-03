@@ -8,6 +8,7 @@ import openfl.display.Sprite;
  */
 class BaseBullet extends Sprite
 {
-	
-	
+	public var sx:Float;
+	public var sy:Float;
+	public function update(deltaTime: Float) : Void {}
 }

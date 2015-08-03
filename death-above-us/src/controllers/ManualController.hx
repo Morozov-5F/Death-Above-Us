@@ -63,7 +63,8 @@ class ManualController implements IController
 			
 			if (Main.keys[Keyboard.SPACE])
 			{
-				trace("FIRE ZE MISSELS");
+				//trace("FIRE ZE MISSELS");
+				controllableTurret.weapon.createShot();
 			}
 			
 			rotation = controllableTurret.setRotation(rotation);

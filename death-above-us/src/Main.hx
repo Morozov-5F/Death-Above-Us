@@ -11,6 +11,9 @@ import openfl.geom.Point;
 import openfl.ui.Keyboard;
 import openfl.ui.Mouse;
 import openfl.Vector;
+import weapons.BaseWeapon.WeaponShotEvent;
+import weapons.bullets.BaseBullet;
+import weapons.DoubleBarelledWeapon;
 
 import openfl.display.Sprite;
 import openfl.display.Bitmap;
@@ -29,7 +32,7 @@ class Main extends Sprite
 	
 	public static var mouseDown: Bool;
 	public static var keys     : Vector<Bool>;
-	
+	private var bullets:Array<BaseBullet>;
 	private var prevTick:Float;
 	
 	public function new() 
@@ -39,7 +42,7 @@ class Main extends Sprite
 		mouseDown = false;
 		keys = new Vector<Bool>(101, true);
 		prevTick = 0;
-		
+		bullets = new Array<BaseBullet>();
 		this.addEventListener(Event.ADDED_TO_STAGE, initialize);
 	}
 	
@@ -47,12 +50,13 @@ class Main extends Sprite
 	{
 		removeEventListener(Event.ADDED_TO_STAGE, initialize);
 		trace("Stage parameters: " + Lib.current.stage.stageWidth + "x" + Lib.current.stage.stageHeight);
-	
+
 		Utils.gameScale = stage.stageHeight / 900;
 		Utils.cameraPosX = 0;
 		var controller:ManualController = new ManualController(true);
-		turret = new Turret(new Point(stage.stageWidth / 2, stage.stageHeight), controller);
+		turret = new Turret(new Point(stage.stageWidth / 2, stage.stageHeight), DoubleBarelledWeapon ,controller);
 		addChild(turret);
+		turret.weapon.addEventListener(WeaponShotEvent.WEAPON_SHOT, onShot);
 		#if mobile
 		stage.addEventListener(TouchEvent.TOUCH_BEGIN, onTouchBegin);
 		stage.addEventListener(TouchEvent.TOUCH_END, onTouchEnd);
@@ -63,6 +67,16 @@ class Main extends Sprite
 		stage.addEventListener(KeyboardEvent.KEY_UP, onKeyUp);
 		#end
 		addEventListener(Event.ENTER_FRAME, update);
+	}
+	
+	private function onShot(e:WeaponShotEvent):Void 
+	{
+		trace(e.bullets);
+		for (i in 0 ... e.bullets.length)
+		{
+			bullets.push(e.bullets[i]);
+			addChild(e.bullets[i]);
+		}
 	}
 	
 
@@ -104,6 +118,11 @@ class Main extends Sprite
 		prevTick = currentTick;
 		
 		turret.update(deltaTime);
+		
+		for (cB in bullets)
+		{
+			cB.update(deltaTime);
+		}
 	}
 	
 }

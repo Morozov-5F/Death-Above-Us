@@ -1,9 +1,13 @@
 package objects;
 
+import haxe.macro.Type.ClassType;
 import openfl.Assets;
 import openfl.display.Bitmap;
 import openfl.display.Sprite;
 import openfl.geom.Point;
+import weapons.bullets.BaseBullet;
+import weapons.bullets.SimpleBullet;
+import weapons.DoubleBarelledWeapon;
 
 import weapons.BaseWeapon;
 import controllers.IController;
@@ -21,7 +25,7 @@ class Turret extends Sprite
 	private var gunSprite :Sprite;
 	private var controller:IController;
 	
-	public function new(position:Point, controller:IController = null) 
+	public function new(position:Point, weaponType:Class<BaseWeapon>, controller:IController = null) 
 	{
 		super();
 		// TODO: Переделать как-нибудь, чтобы было более универсально
@@ -50,6 +54,12 @@ class Turret extends Sprite
 		{
 			this.controller.controllableTurret = this;
 		}
+		
+		// TODO: разобраться нормально с этими классами
+		if (weaponType == DoubleBarelledWeapon)
+		{
+			this.weapon = new DoubleBarelledWeapon(new Point(x, y - baseTexture.height * scaleY), 14, SimpleBullet);
+		}
 	}
 	
 	/**
@@ -71,8 +81,23 @@ class Turret extends Sprite
 		return gunSprite.rotation;
 	}
 	
+	/**
+	 * Возвращает угол поворта пушки турели
+	 * @return NaN, если объекта нет, угол поворота в противном случае
+	 */
+	public function getRotation():Float
+	{
+		if (gunSprite == null)
+		{
+			return Math.NaN;
+		}
+		return gunSprite.rotation;
+	}
+	
 	public function update(deltaTime:Float):Void
 	{
 		controller.update(deltaTime);
+		weapon.rotation = getRotation();
+		weapon.update(deltaTime);
 	}
 }

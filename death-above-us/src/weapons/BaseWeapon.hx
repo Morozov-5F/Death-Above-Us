@@ -2,6 +2,8 @@ package weapons;
 
 import openfl.display.Sprite;
 import openfl.events.Event;
+import openfl.events.EventDispatcher;
+import openfl.geom.Point;
 import openfl.Vector;
 import weapons.bullets.BaseBullet;
 
@@ -14,7 +16,7 @@ class WeaponShotEvent extends Event
 	public static inline var WEAPON_SHOT = "weaponShot";
 	public var bullets:Vector<BaseBullet>;
 	
-	public function new (type:String, bubbles:Bool, cancelable:Void, bullets:Vector<BaseBullet>):Void
+	public function new (type:String, bubbles:Bool, cancelable:Bool, bullets:Vector<BaseBullet>):Void
 	{
 		super(type, bubbles, cancelable);
 		this.bullets = bullets;
@@ -25,13 +27,14 @@ class WeaponShotEvent extends Event
  * Класс базовой пушки
  * @author Evgeniy Morozov
  */
-class BaseWeapon extends Sprite
+class BaseWeapon extends EventDispatcher
 {
-	
+	public var rotation:Float;
 	private var reloadTime:Float;
 	private var reloadMeter:Float;
 	
-	private var bulletType:Class;
+	private var bulletType:Class<BaseBullet>;
+	private var position:Point;
 	
 	public function update(deltaTime:Float):Void { };
 	public function createShot():Void { };
