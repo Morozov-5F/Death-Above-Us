@@ -5,6 +5,8 @@
 # Unnecessary project files
 *.userprefs
 .DS_Store
+.idea
+*.iml
 
 # Build results
 
