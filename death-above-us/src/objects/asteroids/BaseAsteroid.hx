@@ -1,7 +1,10 @@
 package objects.asteroids;
 
 import openfl.display.Sprite;
+import openfl.events.Event;
 import openfl.geom.Point;
+import particles.FireParticle;
+import particles.ParticlesEmitter;
 
 /**
  * Базовый класс астероида
@@ -19,7 +22,27 @@ class BaseAsteroid extends Sprite
 	// больше масса - больше астероид
 	private var mass:Float;
 	
-	public function new() { super(); }
+	private var fireEmitter:ParticlesEmitter;
+	
+	public function new() { 
+		super(); 
+		addEventListener(Event.ADDED_TO_STAGE, setupParticles);
+		addEventListener(Event.REMOVED_FROM_STAGE, removeParticles);
+	}
+	
+	private function setupParticles(e:Event):Void 
+	{
+		removeEventListener(Event.ADDED_TO_STAGE, setupParticles);
+		fireEmitter = new ParticlesEmitter(FireParticle, parent);
+		fireEmitter.scaleX = mass;
+	}
+	
+	private function removeParticles(e:Event):Void 
+	{
+		removeEventListener(Event.REMOVED_FROM_STAGE, removeParticles);
+		fireEmitter.removeParticles();
+		fireEmitter = null;
+	}
 	
 	public function update(deltaTime:Float)
 	{
@@ -27,6 +50,13 @@ class BaseAsteroid extends Sprite
 		y += velocity * velocityDirection.y * deltaTime;
 		
 		rotation += rotationSpeed * deltaTime;
+		
+		if (fireEmitter != null)
+		{
+			fireEmitter.x = x;
+			fireEmitter.y = y;
+			fireEmitter.update(deltaTime);
+		}
 	}
 	
 	public function onHit(damage:Float) {}

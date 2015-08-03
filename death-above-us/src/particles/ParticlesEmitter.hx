@@ -1,7 +1,9 @@
 package particles;
 import openfl.Assets;
 import openfl.display.BitmapData;
+import openfl.display.DisplayObjectContainer;
 import openfl.display.Sprite;
+import openfl.events.Event;
 import openfl.Vector;
 
 /**
@@ -10,7 +12,7 @@ import openfl.Vector;
  */
 class ParticlesEmitter extends Sprite
 {
-	public var particlesContainer:Sprite;
+	public var particlesContainer:DisplayObjectContainer;
 	
 	private var isActive:Bool = false;
 	
@@ -22,12 +24,11 @@ class ParticlesEmitter extends Sprite
 	
 	private var delay:Float = 0;
 
-	public function new(particlesType:Class<Particle>, autoStart:Bool = true)
+	public function new(particlesType:Class<Particle>, particlesContainer:DisplayObjectContainer, autoStart:Bool = true)
 	{
 		super();
 		this.particlesType = particlesType;
-		
-		particlesContainer = new Sprite();
+		this.particlesContainer = particlesContainer;
 		
 		particleSettings = Type.createInstance(particlesType, []);
 		if (particleSettings.textureName == "none")
@@ -51,6 +52,18 @@ class ParticlesEmitter extends Sprite
 		particles = new Array<Particle>();
 	}
 	
+	public function removeParticles():Void 
+	{
+		for (particle in particles)
+		{
+			if (particle != null)
+			{
+				particlesContainer.removeChild(particle);
+			}
+		}		
+		particles = [];
+	}
+	
 	/**
 	 * Начать/возобновить создание частиц
 	 */
@@ -69,6 +82,7 @@ class ParticlesEmitter extends Sprite
 	public function stop()
 	{
 		isActive = false;
+		removeParticles();
 	}
 	
 	public function emit():Void
@@ -132,7 +146,8 @@ class ParticlesEmitter extends Sprite
 		var particle:Particle = Type.createInstance(particlesType, [particleTexture]);
 		particle.x = x;
 		particle.y = y;
-		particlesContainer.addChild(particle);
+		particle.scaleX = particle.scaleY = scaleX;
+		particlesContainer.addChildAt(particle, 0);
 		if (insertIndex == -1)
 		{
 			particles.push(particle);

@@ -14,15 +14,16 @@ class FireParticle extends Particle
 		// Настройки частицы
 		textureName = "fire";
 		
-		maxLifeTime = 0.5;
+		maxLifeTime = 1;
 		
 		emitOnce = false;
-		emitCount = 3;
+		emitCount = 1;
 		emitDelay = 0.01;
 		
 		friction = 0.99;
-		sx = Math.random() * 100 - 50;
-		sy = Math.random() * 100 - 50;
+		var speed:Float = 80;
+		sx = Math.random() * speed - speed/2;
+		sy = Math.random() * speed - speed/2;
 		rotation = Math.random() * 360;
 	}
 	
