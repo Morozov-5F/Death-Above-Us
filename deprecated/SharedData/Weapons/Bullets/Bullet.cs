@@ -60,6 +60,7 @@ namespace devalpha.Weapons.Bullets
         {
             position += 10f * Vector2.One * new Vector2((float)Math.Sin(Rotation),
                 -(float)Math.Cos(Rotation));
+			
         }
     }
 }

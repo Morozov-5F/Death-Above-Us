@@ -1,6 +1,5 @@
 package ui;
 
-import js.html.Navigator;
 import openfl.Assets;
 import openfl.events.Event;
 import openfl.events.MouseEvent;
