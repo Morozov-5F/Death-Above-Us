@@ -1,5 +1,8 @@
-package Screens;
+package screens;
+import openfl.Assets;
+import openfl.display.Bitmap;
 import openfl.display.DisplayObjectContainer;
+import openfl.events.Event;
 
 /**
  * 
@@ -7,18 +10,15 @@ import openfl.display.DisplayObjectContainer;
  */
 class GameScreen extends Screen
 {
-	private var gameObjectsContainer:DisplayObjectContainer;
-	
-	private var bullets:Array;
-	private var asteroid:Array;
-	
 	public function new()
 	{
-		
+		super();
 	}
 	
 	override public function load():Bool 
 	{
+		var test:Bitmap = new Bitmap(Assets.getBitmapData("imgx/menu/logo.png"));
+		addChild(test);
 		return true;
 	}
 	
