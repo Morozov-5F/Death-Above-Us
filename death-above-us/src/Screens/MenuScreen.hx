@@ -2,6 +2,9 @@ package screens;
 import flash.events.Event;
 import openfl.Assets;
 import openfl.display.Bitmap;
+import openfl.media.Sound;
+import openfl.media.SoundChannel;
+import openfl.media.SoundTransform;
 import ui.MenuButton;
 
 /**
