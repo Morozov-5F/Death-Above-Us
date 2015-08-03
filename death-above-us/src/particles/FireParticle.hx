@@ -17,12 +17,21 @@ class FireParticle extends Particle
 		maxLifeTime = 0.5;
 		
 		emitOnce = false;
-		emitCount = 10;
-		emitDelay = 0;
+		emitCount = 3;
+		emitDelay = 0.01;
 		
 		friction = 0.99;
 		sx = Math.random() * 100 - 50;
 		sy = Math.random() * 100 - 50;
+		rotation = Math.random() * 360;
+	}
+	
+	override public function update(deltaTime:Float):Void 
+	{
+		super.update(deltaTime);
+		var lifeMul:Float = 1 - lifeTime / maxLifeTime;
+		// Плавное исчезание
+		alpha = lifeMul;
 	}
 	
 }
