@@ -3,23 +3,23 @@
 	<!-- NMML reference: https://gist.github.com/1763850 -->
 	
 	<!-- metadata, make sure 'package' is at least 3 segments (ie. com.mycompany.myproject) -->
-	<meta title="death-above-us" package="death-above-us" version="1.0.0" company="Evgeniy Morozov" />
+	<meta title="DeathAboveUs" package="com.gameofducks.deathaboveus" version="1.0.0" company="Game Of Ducks" />
 	
 	<!-- output -->
-	<app main="Main" file="death-above-us" path="bin" />
+	<app main="Main" file="DeathAboveUs" path="bin" />
 	
 	<window background="#000000" fps="60" />
-	<window width="800" height="480" unless="mobile" />
-	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />
+	<!--<window width="800" height="480" unless="mobile" />
+	<window orientation="landscape" vsync="false" antialiasing="0" if="cpp" />-->
 	
 	<!-- classpath, haxe libs -->
 	<source path="src" />
 	<haxelib name="openfl" />
-	<haxelib name="actuate" />
 	
 	<!-- assets -->
 	<icon path="assets/openfl.svg" />
-	<assets path="assets/img" rename="img" />
+	<assets path="assets/img" rename="img"/>
+	<assets path="assets/fonts" rename="fonts" unless="html5" />
 	
 	<!-- optimize output
 	<haxeflag name="-dce full" /> -->

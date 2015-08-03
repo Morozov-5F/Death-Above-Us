@@ -10,8 +10,6 @@ import openfl.events.Event;
  */
 class GameScreen extends Screen
 {
-	private var gameObjectsContainer:DisplayObjectContainer;
-	
 	public function new()
 	{
 		super();
@@ -19,6 +17,8 @@ class GameScreen extends Screen
 	
 	override public function load():Bool 
 	{
+		var test:Bitmap = new Bitmap(Assets.getBitmapData("imgx/menu/logo.png"));
+		addChild(test);
 		return true;
 	}
 	

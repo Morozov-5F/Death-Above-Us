@@ -1,5 +1,6 @@
 package screens;
 import openfl.display.Sprite;
+import openfl.events.Event;
 import screens.Screen;
 /**
  * ...
@@ -12,6 +13,14 @@ class ScreenManager extends Sprite
 	public function new() 
 	{
 		super();
+	}
+	
+	public function update(deltaTime:Float):Void 
+	{
+		if (currentScreen != null)
+		{
+			currentScreen.update(deltaTime);
+		}
 	}
 	
 	public function loadScreen(screen:Screen = null) 
@@ -41,6 +50,7 @@ class ScreenManager extends Sprite
 			{
 				trace("Не удалось загрузить экран");
 			}
+			currentScreen = screen;
 		}
 	}
 	

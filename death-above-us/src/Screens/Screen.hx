@@ -7,10 +7,7 @@ import openfl.display.DisplayObjectContainer;
  * @author Evgeniy Morozov
  */
 class Screen extends Sprite
-{
-	private var guiContainer:DisplayObjectContainer;
-	private var backgroundContainer:DisplayObjectContainer;
-	
+{	
 	public function load():Bool
 	{
 		return false;
@@ -20,7 +17,7 @@ class Screen extends Sprite
 		return false;
 	}
 
-	public function update(dt:Float):Void
+	public function update(deltaTime:Float):Void
 	{
 		
 	}
