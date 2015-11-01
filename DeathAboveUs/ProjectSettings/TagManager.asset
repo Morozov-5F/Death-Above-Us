@@ -3,7 +3,11 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Asteroid
+  - Projectile
+  - Background
+  - GUI
   layers:
   - Default
   - TransparentFX
@@ -40,4 +44,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 2367487815
+    locked: 0
+  - name: Asteroids
+    uniqueID: 3988990533
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1158863641
+    locked: 0
+  - name: GUI
+    uniqueID: 2619273593
     locked: 0
