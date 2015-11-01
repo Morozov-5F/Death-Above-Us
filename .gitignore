@@ -24,7 +24,22 @@ sysinfo.txt
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 ExportedObj/
-obj/
+obj/utogenerated VS/MD solution and project files
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+
+# Unity3D generated meta files
+*.pidb.meta
+
+# Unity3D Generated File On Crash Reports
+sysinfo.txt
 *.svd
 *.userprefs
 /*.csproj
@@ -34,6 +49,9 @@ obj/
 *.user
 *.unityproj
 *.booproj
+
+# VS Code
+launch.json
 
 # ============ #
 # OS generated #
