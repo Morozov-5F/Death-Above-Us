@@ -22,10 +22,8 @@ public class ProjectileMovementController : MonoBehaviour
 		var offsetX = velocity * Mathf.Sin(-angle) * Time.deltaTime;
 		var offsetY = velocity * Mathf.Cos(angle) * Time.deltaTime;
 		
-		//  transform.position.Set(newPosX, newPosY, 0);
+		transform.Translate(offsetX, offsetY, 0);
 		
-		transform.Translate(0, offsetY, 0);
-		transform.Translate(offsetX, 0, 0);
 		if (transform.position.y >= 2)
 		{
 			Destroy(gameObject);

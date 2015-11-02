@@ -54,6 +54,9 @@ TagManager:
   - name: Projectiles
     uniqueID: 1158863641
     locked: 0
+  - name: Foreground
+    uniqueID: 515658009
+    locked: 0
   - name: GUI
     uniqueID: 2619273593
     locked: 0
