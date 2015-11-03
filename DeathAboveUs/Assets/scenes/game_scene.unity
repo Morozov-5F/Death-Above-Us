@@ -203,6 +203,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 568374768}
+  - 114: {fileID: 568374769}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -224,6 +225,17 @@ Transform:
   - {fileID: 2038034341}
   m_Father: {fileID: 0}
   m_RootOrder: 8
+--- !u!114 &568374769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568374767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6c1c6a74ded4d498f992fa52f3b9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &843323960
 GameObject:
   m_ObjectHideFlags: 0
@@ -838,6 +850,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2038034341}
   - 212: {fileID: 2038034340}
+  - 114: {fileID: 2038034342}
   m_Layer: 0
   m_Name: turret
   m_TagString: Player
@@ -883,3 +896,14 @@ Transform:
   m_Children: []
   m_Father: {fileID: 568374768}
   m_RootOrder: 1
+--- !u!114 &2038034342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2038034339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6c1c6a74ded4d498f992fa52f3b9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
