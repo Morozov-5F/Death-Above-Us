@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class FPSController : MonoBehaviour {
+public class FPSCounter : MonoBehaviour {
 
 	private Text txt;
 	public float updateTime = 0;

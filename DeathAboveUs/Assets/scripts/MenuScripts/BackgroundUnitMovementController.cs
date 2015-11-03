@@ -2,7 +2,7 @@
 
 public class BackgroundUnitMovementController : MonoBehaviour 
 {
-	public const float MAX_VELOCITY = -0.5f;
+	public float MAX_VELOCITY = -0.5f;
 	public float layer_depth = 1;
 	void Start () 
 	{
