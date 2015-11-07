@@ -219,6 +219,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   layerOffset: .200000003
+--- !u!1001 &500105079
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .376664639
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -.926349699
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400266, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: DispersionAngle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400266, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: MaxAsteroidsCount
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &568374767
 GameObject:
   m_ObjectHideFlags: 0
@@ -247,7 +297,7 @@ Transform:
   - {fileID: 1948947555}
   - {fileID: 2038034341}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
 --- !u!1 &702471957
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,7 +329,7 @@ Transform:
   - {fileID: 1418425293}
   - {fileID: 227671424}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
 --- !u!1 &843323960
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,7 +424,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 4
 --- !u!212 &1087835322
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -495,7 +545,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
 --- !u!212 &1389385986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -602,6 +652,7 @@ GameObject:
   - 124: {fileID: 1550517285}
   - 81: {fileID: 1550517284}
   - 114: {fileID: 1550517289}
+  - 114: {fileID: 1550517290}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -675,7 +726,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
 --- !u!114 &1550517289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -685,6 +736,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 344f5f5da4d8e0b4a882aee3182f09e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1550517290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1550517283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51992d51737b04fdc80f9b80b4cfb318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1575061637
@@ -717,7 +779,7 @@ RectTransform:
   m_Children:
   - {fileID: 2140566510}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -769,7 +831,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 2
   m_RenderMode: 1
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1550517287}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
@@ -897,7 +959,62 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6c1c6a74ded4d498f992fa52f3b9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  INPUT_SENSITIVITY: .5
   MAX_ANGLE: 65
+--- !u!1001 &2051978161
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -.923879564
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .382683307
+      objectReference: {fileID: 0}
+    - target: {fileID: 453940, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 126046, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_Name
+      value: AsteroidSpawner (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400266, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: DispersionAngle
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400266, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: MaxAsteroidsCount
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2140566509
 GameObject:
   m_ObjectHideFlags: 0

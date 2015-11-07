@@ -44,14 +44,15 @@ public class AsteroidController : MonoBehaviour
 	
 	}
 
-	void Update () 
+    void Update () 
 	{
 		transform.Translate(velocity * Time.deltaTime, Space.World);
 		transform.Rotate (new Vector3 (0, 0, rotationSpeed / mass) * Time.deltaTime);
-		// TODO: camera and change condition
-		if (transform.position.y <= -Camera.main.orthographicSize) 
+
+        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        if (transform.position.y <= -GameUtils.cameraHeight / 2f - spriteRenderer.bounds.size.y / 2f) 
 		{
-			Destroy(gameObject);
+            Destroy(gameObject);
 			return;
 		}
 	}

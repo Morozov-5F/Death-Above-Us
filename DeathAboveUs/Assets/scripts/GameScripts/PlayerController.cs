@@ -3,6 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour 
 {
+    public float INPUT_SENSITIVITY = 0.5f;
     public float MAX_ANGLE = 65f;
 
     // Предыдущее положение мыши
@@ -21,7 +22,7 @@ public class PlayerController : MonoBehaviour
     void Rotate(float angle)
     {
         var currentRotation = transform.localEulerAngles.z;
-        currentRotation += angle;
+        currentRotation += angle * INPUT_SENSITIVITY;
         currentRotation = Mathf.Clamp(currentRotation > 180 ? currentRotation - 360 : currentRotation, -MAX_ANGLE, MAX_ANGLE);
         transform.localEulerAngles = new Vector3(0f, 0f, currentRotation);
     }
@@ -59,7 +60,7 @@ public class PlayerController : MonoBehaviour
                     firstTouchID = touch.fingerId;
         }         
         #endif
-
+        
         Rotate(inputDeltaX);
     }
 }

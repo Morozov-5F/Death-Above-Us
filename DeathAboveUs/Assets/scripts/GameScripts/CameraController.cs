@@ -11,8 +11,7 @@ public class CameraController : MonoBehaviour {
         playerTurret = playerGameObject.transform.Find("turret").GetComponent<PlayerController>();
 
         // Вычисление максимального смещения камеры по X
-        float cameraWidth = Camera.main.orthographicSize * 2f * Camera.main.aspect;
-        maxPositionOffset = Mathf.Max(0f, (backgroundLayerWidth - cameraWidth) / 2f);
+        maxPositionOffset = Mathf.Max(0f, (backgroundLayerWidth - GameUtils.cameraWidth) / 2f);
     }
 
 	void Update () {
