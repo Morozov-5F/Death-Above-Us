@@ -24,7 +24,7 @@ public class ProjectileMovementController : MonoBehaviour
 		
 		transform.Translate(offsetX, offsetY, 0);
 		
-		if (transform.position.y >= 2)
+		if (transform.position.y >= Camera.main.orthographicSize)
 		{
 			Destroy(gameObject);
 			return;

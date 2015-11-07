@@ -16,6 +16,7 @@ public class BackgroundUnitMovementController : MonoBehaviour
 		var postitionX = transform.position.x;
 		if (postitionX >= 0 && MAX_VELOCITY > 0)
 			transform.Translate(-4, 0, 0);
+		// TODO: change to relative coordinates
 		if (postitionX <= -4 && MAX_VELOCITY < 0)
 			transform.Translate(4, 0, 0);
 	}

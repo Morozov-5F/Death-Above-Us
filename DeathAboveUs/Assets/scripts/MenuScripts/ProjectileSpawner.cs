@@ -12,8 +12,6 @@ public class ProjectileSpawner : MonoBehaviour
 	private float spawn_timer_value;
 	void Start () 
 	{
-		//  Debug.Assert(template == null, "Projectile Spawner: template object is null!");
-		
 		current_spawn_time = Random.Range(MIN_SPAWN_INTERVAL, MAX_SPAWN_INTERVAL);
 		spawn_timer_value = 0;
 	}
