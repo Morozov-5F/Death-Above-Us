@@ -56,6 +56,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03988a7316d194d4fb44866b6c57f4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionPrefab: {fileID: 198234, guid: f55e58aa08a4c4a4a9759b31cc6e0afb, type: 2}
 --- !u!198 &19822164
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -416,16 +417,16 @@ ParticleSystem:
       maxGradient:
         key0:
           serializedVersion: 2
-          rgba: 4278190080
+          rgba: 4280169983
         key1:
           serializedVersion: 2
-          rgba: 4287675647
+          rgba: 4279491583
         key2:
           serializedVersion: 2
-          rgba: 4291282887
+          rgba: 0
         key3:
           serializedVersion: 2
-          rgba: 8158332
+          rgba: 4278190080
         key4:
           serializedVersion: 2
           rgba: 0
@@ -438,24 +439,24 @@ ParticleSystem:
         key7:
           serializedVersion: 2
           rgba: 0
-        ctime0: 0
-        ctime1: 6361
-        ctime2: 11565
-        ctime3: 20624
+        ctime0: 6361
+        ctime1: 24470
+        ctime2: 65535
+        ctime3: 65535
         ctime4: 65535
         ctime5: 0
         ctime6: 0
         ctime7: 0
-        atime0: 0
-        atime1: 65535
+        atime0: 3271
+        atime1: 57782
         atime2: 65535
-        atime3: 0
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
-        m_NumColorKeys: 5
-        m_NumAlphaKeys: 2
+        m_NumColorKeys: 3
+        m_NumAlphaKeys: 3
       minGradient:
         key0:
           serializedVersion: 2
@@ -1216,15 +1217,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key0.rgba
-      value: 4278190080
+      value: 4280169983
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key2.rgba
-      value: 4291282887
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.atime1
-      value: 65535
+      value: 57782
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.atime2
@@ -1232,31 +1233,31 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.m_NumAlphaKeys
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.ctime1
-      value: 6361
+      value: 24470
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.ctime2
-      value: 11565
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.m_NumColorKeys
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key1.rgba
-      value: 4287675647
+      value: 4279491583
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.ctime3
-      value: 20624
+      value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.key3.rgba
-      value: 8158332
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: ColorModule.gradient.maxGradient.ctime4
@@ -1298,6 +1299,22 @@ Prefab:
       propertyPath: EmissionModule.rate.scalar
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 3271
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorModule.gradient.maxGradient.atime3
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ColorModule.gradient.maxGradient.ctime0
+      value: 6361
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 198234, guid: f55e58aa08a4c4a4a9759b31cc6e0afb, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 172032}
