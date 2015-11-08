@@ -23,11 +23,7 @@ public class TurretWeapon : MonoBehaviour
 #else
         foreach (var currentTouch in Input.touches) 
         {
-            // TODO: add input align (left or right)
-            if (currentTouch.phase != TouchPhase.Ended && currentTouch.phase != TouchPhase.Canceled)
-            {
-                input = (currentTouch.position <= GameUtils.cameraWidth * GameUtils.PIXELS_IN_UNITS)
-            }
+            input = (currentTouch.position.x <= Screen.width / 2f);
         }
 #endif
 		if (input && currentReloadTime >= ReloadTime) 
