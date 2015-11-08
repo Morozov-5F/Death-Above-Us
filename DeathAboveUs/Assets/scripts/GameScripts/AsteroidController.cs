@@ -6,6 +6,7 @@ public class AsteroidController : MonoBehaviour
 	private Vector3 velocity; 
 	private float rotationSpeed;
 	private float mass;
+    private float hp;
 
 	public Vector3 Direction
 	{
@@ -33,9 +34,10 @@ public class AsteroidController : MonoBehaviour
 
 			var collider = gameObject.GetComponent<CircleCollider2D>();
 			collider.radius = spriteRenderer.bounds.size.magnitude / 2 * 0.8f;
-			mass = spriteRenderer.bounds.size.magnitude * 10;
 
-			rotationSpeed = Random.Range(-10.0f, 10.0f);
+			mass = spriteRenderer.bounds.size.magnitude * 10;
+            hp = 100 * mass;
+			rotationSpeed = Random.Range(-50.0f, 50.0f);
 		}
 	}
 
@@ -47,7 +49,7 @@ public class AsteroidController : MonoBehaviour
     void Update () 
 	{
 		transform.Translate(velocity * Time.deltaTime, Space.World);
-		transform.Rotate (new Vector3 (0, 0, rotationSpeed / mass) * Time.deltaTime);
+		transform.Rotate (new Vector3 (0, 0, rotationSpeed) * Time.deltaTime);
 
         var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
         if (transform.position.y <= -GameUtils.cameraHeight / 2f - spriteRenderer.bounds.size.y / 2f) 
@@ -56,4 +58,11 @@ public class AsteroidController : MonoBehaviour
 			return;
 		}
 	}
+
+    void OnCollision(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+            Destroy(gameObject);
+    }
 }
