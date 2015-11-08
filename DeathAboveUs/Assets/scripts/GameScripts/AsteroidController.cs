@@ -7,6 +7,7 @@ public class AsteroidController : MonoBehaviour
 	private Vector3 velocity; 
 	private float rotationSpeed;
 	private float mass;
+    private float hp;
 
     private bool isDestroying = false;
     private ParticleSystem particleSystem;
@@ -37,9 +38,10 @@ public class AsteroidController : MonoBehaviour
 
 			var collider = gameObject.GetComponent<CircleCollider2D>();
 			collider.radius = spriteRenderer.bounds.size.magnitude / 2 * 0.8f;
-			mass = spriteRenderer.bounds.size.magnitude * 10;
 
-			rotationSpeed = Random.Range(-10.0f, 10.0f);
+			mass = spriteRenderer.bounds.size.magnitude * 10;
+            hp = 100 * mass;
+			rotationSpeed = Random.Range(-50.0f, 50.0f);
 		}
 	}
 
@@ -54,7 +56,7 @@ public class AsteroidController : MonoBehaviour
         if (!isDestroying)
         {
             transform.Translate(velocity * Time.deltaTime, Space.World);
-            transform.Rotate(new Vector3(0, 0, rotationSpeed / mass) * Time.deltaTime);
+            transform.Rotate(new Vector3(0, 0, rotationSpeed) * Time.deltaTime);
 
             var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             // Взрыв и удаление астероида при уходе за нижний край экрана
@@ -78,6 +80,13 @@ public class AsteroidController : MonoBehaviour
         if (isDestroying && particleSystem.particleCount <= 0)
         {
             Destroy(gameObject);
-        }
+		}
+	}
+
+    void OnCollision(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+            Destroy(gameObject);
     }
 }

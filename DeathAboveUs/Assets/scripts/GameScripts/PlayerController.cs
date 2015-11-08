@@ -46,21 +46,24 @@ public class PlayerController : MonoBehaviour
         #else
         foreach (var touch in Input.touches)
         {
-            if (firstTouchID >= 0)
+            if (touch.position.x >= GameUtils.cameraWidth * GameUtils.PIXELS_IN_UNITS / 2)
             {
-                if (touch.fingerId == firstTouchID)
+                if (firstTouchID >= 0)
                 {
-                    inputDeltaX = -touch.deltaPosition.x;
-
-                    if (touch.phase == TouchPhase.Ended)
-                        firstTouchID = -1;
+                    if (touch.fingerId == firstTouchID)
+                    {
+                        inputDeltaX = -touch.deltaPosition.x;
+                        
+                        if (touch.phase == TouchPhase.Ended)
+                            firstTouchID = -1;
+                    }
+                    else if (touch.phase == TouchPhase.Began)
+                        firstTouchID = touch.fingerId;
                 }
             }
-            else if (touch.phase == TouchPhase.Began)
-                    firstTouchID = touch.fingerId;
-        }         
+        }
         #endif
-        
+
         Rotate(inputDeltaX);
     }
 }

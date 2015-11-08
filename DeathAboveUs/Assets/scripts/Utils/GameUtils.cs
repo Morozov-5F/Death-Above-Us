@@ -7,6 +7,8 @@ public static class GameUtils
     public static float cameraWidth;
     public static float cameraHeight;
 
+    public const int PIXELS_IN_UNITS = 64;
+
     public static float WrapAngle(float angle)
     {
         while (angle <= -180)
