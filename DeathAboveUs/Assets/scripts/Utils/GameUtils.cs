@@ -9,6 +9,10 @@ public static class GameUtils
 
     public static float WrapAngle(float angle)
     {
-        return 0;
+        while (angle <= -180)
+            angle += 360f;
+        while (angle > 180f)
+            angle -= 360f;
+        return angle;
     }
 }
