@@ -608,7 +608,79 @@ Transform:
   - {fileID: 177424269}
   - {fileID: 227671424}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
+--- !u!1 &809483442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 809483443}
+  - 222: {fileID: 809483445}
+  - 114: {fileID: 809483444}
+  m_Layer: 5
+  m_Name: Planet Health Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &809483443
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809483442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1575061638}
+  m_RootOrder: 1
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -310.399994, y: 189.899994}
+  m_SizeDelta: {x: 175.399994, y: 17.8999996}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &809483444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809483442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 40
+    m_Alignment: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'Planet health: 999999'
+--- !u!222 &809483445
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 809483442}
 --- !u!1 &832794139
 GameObject:
   m_ObjectHideFlags: 0
@@ -642,7 +714,7 @@ RectTransform:
   - {fileID: 1017177196}
   - {fileID: 1092997952}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -898,7 +970,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1550517291}
-        m_MethodName: ShowGameUI
+        m_MethodName: DeathUIRestartButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -943,7 +1015,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
 --- !u!212 &1087835322
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1043,7 +1115,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 225187130}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1550517291}
+        m_MethodName: DeathUIBackButtonClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!222 &1092997954
@@ -1151,7 +1234,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!212 &1389385986
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1400,8 +1483,9 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1200884637}
+  - {fileID: 809483443}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1716,7 +1800,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 126046, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
       propertyPath: m_Name
-      value: AsteroidSpawner (1)
+      value: AsteroidSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 11400266, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
       propertyPath: DispersionAngle
@@ -1758,7 +1842,7 @@ Transform:
   m_LocalScale: {x: .0044432315, y: .0044432315, z: .0044432315}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 9
 --- !u!114 &2086963463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1844,19 +1928,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22422500, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 82
+      value: 66.5
       objectReference: {fileID: 0}
     - target: {fileID: 22422500, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: -17
+      value: -14.1000004
       objectReference: {fileID: 0}
     - target: {fileID: 22422500, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
       propertyPath: m_SizeDelta.x
-      value: 160
+      value: 129.100006
       objectReference: {fileID: 0}
     - target: {fileID: 22422500, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 24.2000008
       objectReference: {fileID: 0}
     - target: {fileID: 22422500, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
       propertyPath: m_AnchorMin.x
@@ -1881,6 +1965,18 @@ Prefab:
     - target: {fileID: 22422500, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
       propertyPath: m_Pivot.y
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411422, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411422, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11411422, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}
+      propertyPath: m_FontData.m_RichText
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 31737bcf0027a314b97c49ef676a41e5, type: 2}

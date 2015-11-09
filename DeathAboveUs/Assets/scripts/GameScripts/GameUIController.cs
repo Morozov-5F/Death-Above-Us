@@ -33,6 +33,11 @@ public class GameUIController : MonoBehaviour {
     }
 
     // Обработка кнопок
+    public void DeathUIRestartButtonClick()
+    {
+        Application.LoadLevel(1);
+    }
+
     public void DeathUIBackButtonClick()
     {
         Application.LoadLevel("menu_scene");
