@@ -472,8 +472,58 @@ Prefab:
       propertyPath: MaxAsteroidsCount
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 126046, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1001 &508643571
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.32799995
+      objectReference: {fileID: 0}
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .601000011
+      objectReference: {fileID: 0}
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 160396, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: m_TagString
+      value: Asteroid
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &568374767
 GameObject:
@@ -868,6 +918,47 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2038034341}
   m_RootOrder: 0
+--- !u!1 &928915707 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 160396, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+  m_PrefabInternal: {fileID: 508643571}
+--- !u!60 &928915711
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 928915707}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  m_Points:
+    m_Paths:
+    - - {x: -.0549274087, y: .15332979}
+      - {x: -.24056828, y: .0655723959}
+      - {x: -.239516377, y: -.0267106071}
+      - {x: -.0793913603, y: -.15625}
+      - {x: .0864952803, y: -.156254247}
+      - {x: .238948941, y: -.0272780061}
+      - {x: .24380672, y: .0693783313}
+      - {x: .0554901958, y: .153011471}
+--- !u!50 &928915712
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 928915707}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &940366785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1809,6 +1900,10 @@ Prefab:
     - target: {fileID: 11400266, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
       propertyPath: MaxAsteroidsCount
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 126046, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 861fefd930d004804bf5a7915bb3e333, type: 2}
