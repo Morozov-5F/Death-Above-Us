@@ -10,13 +10,4 @@ public class GameInitializationController : MonoBehaviour {
         GameUtils.cameraHeight = Camera.main.orthographicSize * 2f;
         GameUtils.cameraWidth = GameUtils.cameraHeight * Camera.main.aspect;
     }
-
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }

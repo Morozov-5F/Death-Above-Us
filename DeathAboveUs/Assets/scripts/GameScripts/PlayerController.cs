@@ -8,14 +8,18 @@ public class PlayerController : MonoBehaviour
 
     // Предыдущее положение мыши
     private Vector3 dragOrigin;
+
+    private TurretWeapon turret;
 	
 	void Start () 
 	{
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         Input.simulateMouseWithTouches = true;
-        #else
+#else
         Input.simulateMouseWithTouches = false;
-        #endif
+#endif
+
+        turret = GetComponent<TurretWeapon>();
     }
 
     void Rotate(float angle)
@@ -30,25 +34,35 @@ public class PlayerController : MonoBehaviour
 	{
         float inputDeltaX = 0f;
         // Управление мышью только в редакторе
-        #if UNITY_EDITOR
-            if (Input.GetMouseButtonDown(0))
-            {
-                dragOrigin = Input.mousePosition;
-            }
-            else if (Input.GetMouseButton(0))
-            {
-                var dragDelta = dragOrigin - Input.mousePosition;
-                dragOrigin = Input.mousePosition;
+        turret.isShooting = false;
+#if UNITY_EDITOR
+        if (Input.GetMouseButtonDown(0))
+        {
+            dragOrigin = Input.mousePosition;
+        }
+        else if (Input.GetMouseButton(0))
+        {
+            var dragDelta = dragOrigin - Input.mousePosition;
+            dragOrigin = Input.mousePosition;
 
-                inputDeltaX = dragDelta.x;
-            }
+            inputDeltaX = dragDelta.x;
+        }
+
+        // Стрельба
+        if (Input.GetKey(KeyCode.Space))
+        {
+            turret.isShooting = true;
+        }
 #else
         foreach (var touch in Input.touches)
         {
             if (touch.position.x >= Screen.width / 2f)
             {
                 inputDeltaX = -touch.deltaPosition.x;
-                break;
+            }
+            else
+            {
+                turret.isShooting = true;
             }
         }
 #endif

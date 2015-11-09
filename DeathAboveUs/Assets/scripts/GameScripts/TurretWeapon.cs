@@ -8,25 +8,19 @@ public class TurretWeapon : MonoBehaviour
 	public float ReloadTime = 200;
 	private float currentReloadTime;
 
+    public bool isShooting;
+
 	public List<GameObject> Barrels;
 	
 	void Start () 
 	{
-		currentReloadTime = 0;
+        isShooting = false;
+        currentReloadTime = 0;
 	}
 	
 	void Update () 
 	{
-		bool input = false;
-#if UNITY_EDITOR
-		input = Input.GetKey(KeyCode.Space);
-#else
-        foreach (var currentTouch in Input.touches) 
-        {
-            input = (currentTouch.position.x <= Screen.width / 2f);
-        }
-#endif
-		if (input && currentReloadTime >= ReloadTime) 
+		if (isShooting && currentReloadTime >= ReloadTime) 
 		{
             float angle = transform.localEulerAngles.z * Mathf.Deg2Rad;
             Vector3 direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));

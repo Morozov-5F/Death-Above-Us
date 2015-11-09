@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03988a7316d194d4fb44866b6c57f4a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 198234, guid: f55e58aa08a4c4a4a9759b31cc6e0afb, type: 2}
+  explosionPrefab: {fileID: 115162, guid: 11dfa088237cd2147833f49bb45e8272, type: 2}
 --- !u!198 &19822164
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1332,6 +1332,10 @@ Prefab:
       propertyPath: m_GravityScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: explosionPrefab
+      value: 
+      objectReference: {fileID: 115162, guid: 11dfa088237cd2147833f49bb45e8272, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 172032}

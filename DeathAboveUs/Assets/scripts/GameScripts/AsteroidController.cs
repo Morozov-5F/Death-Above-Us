@@ -51,6 +51,23 @@ public class AsteroidController : MonoBehaviour
         transform.Rotate(0f, 0f, Random.Range(0f, 360f));
 	}
 
+    void Explode()
+    {
+        // Остановка создания частиц
+        particleSystem.enableEmission = false;
+        // Скрытие спрайта
+        var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
+        // Отключение коллайдера
+        var collider = gameObject.GetComponent<CircleCollider2D>();
+        collider.enabled = false;
+        // Создание взрыва
+        if (explosionPrefab != null)
+            Instantiate(explosionPrefab, transform.position, transform.rotation);
+        // Удаление
+        isDestroying = true;
+    }
+
     void Update () 
 	{
         if (!isDestroying)
@@ -62,17 +79,9 @@ public class AsteroidController : MonoBehaviour
             // Взрыв и удаление астероида при уходе за нижний край экрана
             if (transform.position.y <= -GameUtils.cameraHeight / 2f)
             {
-                // Остановка создания частиц
-                particleSystem.enableEmission = false;
-                // Скрытие спрайта
-                spriteRenderer.enabled = false;
+                Explode();
                 // Тряска камеры
                 Camera.main.SendMessage("Shake");
-                // Создание взрыва
-                if (explosionPrefab != null)
-                    Instantiate(explosionPrefab, transform.position, transform.rotation);
-                // Удаление
-                isDestroying = true;
             }
         }
 
@@ -87,6 +96,6 @@ public class AsteroidController : MonoBehaviour
     {
         hp -= damage;
         if (hp <= 0)
-            Destroy(gameObject);
+            Explode();
     }
 }
