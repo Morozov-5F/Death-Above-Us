@@ -970,7 +970,7 @@ Canvas:
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: -1675693703
   m_SortingOrder: 0
 --- !u!1 &843323960
 GameObject:
