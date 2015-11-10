@@ -23,12 +23,10 @@ public class TurretWeapon : MonoBehaviour
 	
 	void Update () 
 	{
-        if (isShooting && !SoundSource.isPlaying)
-            SoundSource.Play();
-        else if (!isShooting)
-            SoundSource.Stop();
+
 		if (isShooting && currentReloadTime >= ReloadTime) 
 		{
+            SoundSource.Play();
             float angle = transform.localEulerAngles.z * Mathf.Deg2Rad;
             Vector3 direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
             foreach (var currentBarrel in Barrels)
