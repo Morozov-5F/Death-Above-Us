@@ -54,7 +54,7 @@ public class SimpleTurretController : MonoBehaviour
 			return;
 		}
 		var targetScript = target.GetComponent<AsteroidController>();
-		if (targetScript.hp <= 0)
+        if (targetScript.hp <= 0)
 		{
 			target = null;
 			return;
