@@ -85,6 +85,52 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &65548821
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 928915708}
+    m_Modifications:
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: .00199997425
+      objectReference: {fileID: 0}
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .0840000063
+      objectReference: {fileID: 0}
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .261024177
+      objectReference: {fileID: 0}
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .96533227
+      objectReference: {fileID: 0}
+    - target: {fileID: 483692, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 19847460, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+      propertyPath: EmissionModule.rate.scalar
+      value: 10
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 74afb6c9eefc0254981fb50c6414e835, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &72432615
 GameObject:
   m_ObjectHideFlags: 0
@@ -488,11 +534,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -1.32799995
+      value: -1.18099999
       objectReference: {fileID: 0}
     - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
       propertyPath: m_LocalPosition.y
-      value: .601000011
+      value: .177000001
       objectReference: {fileID: 0}
     - target: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
       propertyPath: m_LocalPosition.z
@@ -521,6 +567,18 @@ Prefab:
     - target: {fileID: 160396, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
       propertyPath: m_TagString
       value: Asteroid
+      objectReference: {fileID: 0}
+    - target: {fileID: 19850802, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: InitialModule.inheritVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 19878620, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: InitialModule.inheritVelocity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11430208, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+      propertyPath: MAX_SMOKE_RATE
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
@@ -921,6 +979,10 @@ Transform:
 --- !u!1 &928915707 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 160396, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
+  m_PrefabInternal: {fileID: 508643571}
+--- !u!4 &928915708 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 454300, guid: 6500ece7ec5bc404c90e85f99e20a842, type: 2}
   m_PrefabInternal: {fileID: 508643571}
 --- !u!60 &928915711
 PolygonCollider2D:
