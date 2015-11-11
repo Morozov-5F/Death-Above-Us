@@ -53,6 +53,12 @@ public class SimpleTurretController : MonoBehaviour
 		{
 			return;
 		}
+		var targetScript = target.GetComponent<AsteroidController>();
+		if (targetScript.hp <= 0)
+		{
+			target = null;
+			return;
+		}
 		Vector3 vecToTarget = target.transform.position - gameObject.transform.position;	
 		float desiredAngle = GameUtils.WrapAngle(Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg - 90);
 		float delta = desiredAngle - GameUtils.WrapAngle(gameObject.transform.eulerAngles.z);

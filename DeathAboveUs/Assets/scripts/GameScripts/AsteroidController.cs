@@ -7,7 +7,7 @@ public class AsteroidController : MonoBehaviour
 	private Vector3 velocity; 
 	private float rotationSpeed;
 	private float mass;
-    private float hp;
+    public float hp;
 
     private bool isDestroying = false;
     private ParticleSystem particleSystem;
