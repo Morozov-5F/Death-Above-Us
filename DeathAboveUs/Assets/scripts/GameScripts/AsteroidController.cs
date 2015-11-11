@@ -74,8 +74,6 @@ public class AsteroidController : MonoBehaviour
         {
             transform.Translate(velocity * Time.deltaTime, Space.World);
             transform.Rotate(new Vector3(0, 0, rotationSpeed) * Time.deltaTime);
-
-            var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             // Взрыв и удаление астероида при уходе за нижний край экрана
             if (transform.position.y <= -GameUtils.cameraHeight / 2f)
             {

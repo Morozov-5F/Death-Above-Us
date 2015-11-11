@@ -7,7 +7,6 @@ public class TurretWeapon : MonoBehaviour
 
 	public float ReloadTime = 200;
 	private float currentReloadTime;
-    private float audioTimer;
     public bool isShooting;
 
 	public List<GameObject> Barrels;
@@ -17,7 +16,6 @@ public class TurretWeapon : MonoBehaviour
 	{
         isShooting = false;
         currentReloadTime = 0;
-        audioTimer = 0;
         SoundSource.Stop();
 	}
 	
@@ -27,8 +25,6 @@ public class TurretWeapon : MonoBehaviour
 		if (isShooting && currentReloadTime >= ReloadTime) 
 		{
             SoundSource.Play();
-            float angle = transform.localEulerAngles.z * Mathf.Deg2Rad;
-            Vector3 direction = new Vector3(Mathf.Sin(angle), Mathf.Cos(angle));
             foreach (var currentBarrel in Barrels)
             {
                 var currentProjectile = Instantiate(Projectile, currentBarrel.transform.position, transform.rotation) as GameObject;

@@ -8,6 +8,7 @@ public class SimpleTurretController : MonoBehaviour
 	public float RadarError = 5;
 	public float RotationSpeed = 5;
 	private TurretWeapon weapon;
+	public float MAX_ANGLE = 65f;
 	void Start () 
 	{
 		weapon = GetComponent<TurretWeapon>();
@@ -52,11 +53,9 @@ public class SimpleTurretController : MonoBehaviour
 		{
 			return;
 		}
-		
 		Vector3 vecToTarget = target.transform.position - gameObject.transform.position;	
 		float desiredAngle = GameUtils.WrapAngle(Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg - 90);
-		float delta = desiredAngle - gameObject.transform.eulerAngles.z;
-		Debug.Log(desiredAngle + " " + transform.eulerAngles.z);
+		float delta = desiredAngle - GameUtils.WrapAngle(gameObject.transform.eulerAngles.z);
 		if (Mathf.Abs(delta) < RadarError)
 		{
 			weapon.isShooting = true;
@@ -64,6 +63,7 @@ public class SimpleTurretController : MonoBehaviour
 		else 
 		{
 			transform.Rotate(new Vector3(0, 0, Mathf.Sign(delta) * RotationSpeed * Time.deltaTime));
+			weapon.isShooting = false;
 		}
 	}
 }
