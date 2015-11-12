@@ -14,7 +14,7 @@ GameObject:
   - 198: {fileID: 19822164}
   - 199: {fileID: 19976180}
   - 50: {fileID: 5038228}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: asteroid
   m_TagString: Asteroid
   m_Icon: {fileID: 0}
@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionPrefab: {fileID: 115162, guid: 11dfa088237cd2147833f49bb45e8272, type: 2}
+  hp: 0
 --- !u!198 &19822164
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1336,6 +1337,10 @@ Prefab:
       propertyPath: explosionPrefab
       value: 
       objectReference: {fileID: 115162, guid: 11dfa088237cd2147833f49bb45e8272, type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 172032}

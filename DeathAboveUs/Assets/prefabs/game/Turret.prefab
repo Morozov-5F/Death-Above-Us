@@ -8,7 +8,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 470112}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: barrel1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -26,7 +26,7 @@ GameObject:
   - 212: {fileID: 21269290}
   - 114: {fileID: 11466744}
   - 82: {fileID: 8208898}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: turret
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 428884}
   - 212: {fileID: 21292888}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 473312}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Turret
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 442896}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: barrel2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -158,6 +158,7 @@ AudioSource:
   m_Pitch: 1
   Loop: 0
   Mute: 0
+  Spatialize: 0
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
@@ -220,16 +221,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 137322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 537ff2a0f11c340aaab4c8a0f144c7b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d1fa56509cf44bd79166d55044871e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 472434, guid: df7911dd864f94ecfad5b8e106c8fa32, type: 2}
-  ReloadTime: 100
+  Projectile: {fileID: 0}
+  ReloadTime: 200
   isShooting: 0
-  Barrels:
-  - {fileID: 134138}
-  - {fileID: 180036}
+  Barrels: []
   SoundSource: {fileID: 8208898}
+  CollidableLayers:
+    serializedVersion: 2
+    m_Bits: 2304
 --- !u!212 &21269290
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -293,6 +295,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: CollidableLayers.m_Bits
+      value: 2304
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: SoundSource
+      value: 
+      objectReference: {fileID: 8208898}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151074}

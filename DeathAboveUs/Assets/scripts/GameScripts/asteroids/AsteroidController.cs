@@ -10,7 +10,7 @@ public class AsteroidController : MonoBehaviour
     public float hp;
 
     private bool isDestroying = false;
-    private ParticleSystem particleSystem;
+    new private ParticleSystem particleSystem;
 
 	public Vector3 Direction
 	{
@@ -90,7 +90,7 @@ public class AsteroidController : MonoBehaviour
 		}
 	}
 
-    void OnCollision(float damage)
+    void OnBulletHit(float damage)
     {
         hp -= damage;
         if (hp <= 0)

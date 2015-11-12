@@ -1911,6 +1911,9 @@ MonoBehaviour:
   - {fileID: 339914750}
   - {fileID: 225508248}
   SoundSource: {fileID: 1604162215}
+  CollidableLayers:
+    serializedVersion: 2
+    m_Bits: 2304
 --- !u!212 &1604162217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1949,8 +1952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c6c1c6a74ded4d498f992fa52f3b9ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  INPUT_SENSITIVITY: .5
   MAX_ANGLE: 65
+  INPUT_SENSITIVITY: .5
 --- !u!1 &1656718209
 GameObject:
   m_ObjectHideFlags: 0
@@ -2053,10 +2056,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cbc19a591fac4127a1ccae60554aa2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MAX_ANGLE: 65
+  INPUT_SENSITIVITY: 1
   RadarRadius: 100
   RadarError: 5
   RotationSpeed: 30
-  MAX_ANGLE: 65
 --- !u!4 &1948961926
 Transform:
   m_ObjectHideFlags: 0
@@ -2161,6 +2165,9 @@ MonoBehaviour:
   - {fileID: 712290598}
   - {fileID: 1028781412}
   SoundSource: {fileID: 1948961927}
+  CollidableLayers:
+    serializedVersion: 2
+    m_Bits: 2304
 --- !u!212 &1948961929
 SpriteRenderer:
   m_ObjectHideFlags: 0

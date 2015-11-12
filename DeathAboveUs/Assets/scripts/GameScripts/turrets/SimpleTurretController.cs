@@ -1,18 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-public class SimpleTurretController : MonoBehaviour 
+public class SimpleTurretController : Turret 
 {
 	private GameObject target;
 	public float RadarRadius = 2;
 	public float RadarError = 5;
 	public float RotationSpeed = 5;
-	private TurretWeapon weapon;
-	public float MAX_ANGLE = 65f;
-	void Start () 
+	
+	new void Start () 
 	{
-		weapon = GetComponent<TurretWeapon>();
 		target = null;
+		base.Start();
 	}
 	
 	GameObject FindTarget()
@@ -68,7 +67,7 @@ public class SimpleTurretController : MonoBehaviour
 		}
 		else 
 		{
-			transform.Rotate(new Vector3(0, 0, Mathf.Sign(delta) * RotationSpeed * Time.deltaTime));
+			Rotate(Mathf.Sign(delta) * RotationSpeed * Time.deltaTime);
 			weapon.isShooting = false;
 		}
 	}

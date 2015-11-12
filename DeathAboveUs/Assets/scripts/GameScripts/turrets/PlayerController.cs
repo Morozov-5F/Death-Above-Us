@@ -1,40 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour 
+public class PlayerController : Turret 
 {
-    public float INPUT_SENSITIVITY = 0.5f;
-    public float MAX_ANGLE = 65f;
-
-    // Предыдущее положение мыши
     private Vector3 dragOrigin;
-
-    private TurretWeapon turret;
-	
-	void Start () 
+	new void Start () 
 	{
 #if UNITY_EDITOR
         Input.simulateMouseWithTouches = true;
 #else
         Input.simulateMouseWithTouches = false;
 #endif
-
-        turret = GetComponent<TurretWeapon>();
+        base.Start();
     }
-
-    void Rotate(float angle)
-    {
-        var currentRotation = transform.localEulerAngles.z;
-        currentRotation += angle * INPUT_SENSITIVITY;
-        currentRotation = Mathf.Clamp(currentRotation > 180 ? currentRotation - 360 : currentRotation, -MAX_ANGLE, MAX_ANGLE);
-        transform.localEulerAngles = new Vector3(0f, 0f, currentRotation);
-    }
-	
+    
 	void Update () 
 	{
         float inputDeltaX = 0f;
         // Управление мышью только в редакторе
-        turret.isShooting = false;
+        weapon.isShooting = false;
 #if UNITY_EDITOR
         if (Input.GetMouseButtonDown(0))
         {
@@ -51,7 +35,7 @@ public class PlayerController : MonoBehaviour
         // Стрельба
         if (Input.GetKey(KeyCode.Space))
         {
-            turret.isShooting = true;
+            weapon.isShooting = true;
         }
 #else
         foreach (var touch in Input.touches)
@@ -62,11 +46,22 @@ public class PlayerController : MonoBehaviour
             }
             else
             {
-                turret.isShooting = true;
+                weapon.isShooting = true;
             }
         }
 #endif
-
         Rotate(inputDeltaX);
+    }
+    
+    new public void OnBulletHit(float damage)
+    {
+        hp -= damage;
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+            // Вызов экрана Game Over 
+            var ui = Camera.main.GetComponent<GameUIController>();
+            ui.ShowDeathUI();
+        }   
     }
 }

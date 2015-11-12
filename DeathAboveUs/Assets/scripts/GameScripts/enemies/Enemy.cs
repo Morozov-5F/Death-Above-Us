@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : MonoBehaviour 
+{
     public GameObject explosionPrefab;
     public float MAX_HEALTH = 10000f;
     protected float health;
@@ -11,7 +12,8 @@ public class Enemy : MonoBehaviour {
     public float MAX_SMOKE_RATE = 10;
 
 	// Use this for initialization
-	void Start () {
+	public void Start () 
+    {
         var smokeObject = transform.Find("Engine Smoke");
         if (smokeObject)
         {
@@ -26,14 +28,14 @@ public class Enemy : MonoBehaviour {
         health = MAX_HEALTH;
     }
 
-    void Explode()
+    protected void Explode()
     {
         // Создание взрыва
         if (explosionPrefab != null)
             Instantiate(explosionPrefab, transform.position, transform.rotation);
     }
 
-    public void OnCollision(float damage)
+    public void OnBulletHit(float damage)
     {
         health = Mathf.Max(0f, health - damage);
         if (smokeEmitter)
