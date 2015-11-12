@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class TurretWeapon : Weapon 
+public class MachineGun : Weapon 
 {
 	new void Start () 
 	{
@@ -14,7 +14,7 @@ public class TurretWeapon : Weapon
             SoundSource.Play();
             foreach (var currentBarrel in Barrels)
             {
-                var currentProjectile = (Instantiate(Projectile, currentBarrel.transform.position, transform.rotation) as Transform).gameObject;
+                var currentProjectile = (Instantiate(Projectile, currentBarrel.transform.position, currentBarrel.transform.rotation) as Transform).gameObject;
 				currentProjectile.GetComponent<ProjectileController>().CollidableLayers = CollidableLayers;
             }
             currentReloadTime = 0;

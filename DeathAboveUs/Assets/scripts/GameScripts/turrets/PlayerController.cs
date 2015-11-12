@@ -56,9 +56,12 @@ public class PlayerController : Turret
     new public void OnBulletHit(float damage)
     {
         hp -= damage;
+        
         if (hp <= 0)
         {
-            Destroy(gameObject);
+            // Пока костыль
+            var toDestroy = GameObject.Find("Player");
+            Destroy(toDestroy);
             // Вызов экрана Game Over 
             var ui = Camera.main.GetComponent<GameUIController>();
             ui.ShowDeathUI();

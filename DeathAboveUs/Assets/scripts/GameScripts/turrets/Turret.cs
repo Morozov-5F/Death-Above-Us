@@ -6,13 +6,13 @@ public class Turret : MonoBehaviour
     public float MAX_ANGLE = 65f;
     public uint MAX_HP = 100;
 	public float INPUT_SENSITIVITY = 1f;
-    protected TurretWeapon weapon;
+    protected Weapon weapon;
     protected float hp;
 	
 	public void Start () 
 	{
         hp = (float)MAX_HP;
-        weapon = GetComponent<TurretWeapon>();
+        weapon = GetComponent<Weapon>();
     }
 
     public void Rotate(float angle)

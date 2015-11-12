@@ -26,6 +26,9 @@ GameObject:
   - 212: {fileID: 21269290}
   - 114: {fileID: 11466744}
   - 82: {fileID: 8208898}
+  - 114: {fileID: 11492356}
+  - 61: {fileID: 6141952}
+  - 50: {fileID: 5031704}
   m_Layer: 10
   m_Name: turret
   m_TagString: Player
@@ -42,6 +45,8 @@ GameObject:
   m_Component:
   - 4: {fileID: 428884}
   - 212: {fileID: 21292888}
+  - 61: {fileID: 6143128}
+  - 50: {fileID: 5072720}
   m_Layer: 10
   m_Name: base
   m_TagString: Untagged
@@ -136,13 +141,71 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 151074}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -.889999986, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 428884}
   - {fileID: 472756}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!50 &5031704
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137322}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!50 &5072720
+Rigidbody2D:
+  serializedVersion: 2
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144278}
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: .0500000007
+  m_GravityScale: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &6141952
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137322}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: .0649999976}
+  serializedVersion: 2
+  m_Size: {x: .125, y: .203125}
+--- !u!61 &6143128
+BoxCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 144278}
+  m_Enabled: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: -.0799999982}
+  serializedVersion: 2
+  m_Size: {x: .21875, y: .0700000003}
 --- !u!82 &8208898
 AudioSource:
   m_ObjectHideFlags: 1
@@ -224,14 +287,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d1fa56509cf44bd79166d55044871e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Projectile: {fileID: 0}
-  ReloadTime: 200
+  Projectile: {fileID: 472434, guid: df7911dd864f94ecfad5b8e106c8fa32, type: 2}
+  ReloadTime: 100
   isShooting: 0
-  Barrels: []
+  Barrels:
+  - {fileID: 134138}
+  - {fileID: 180036}
   SoundSource: {fileID: 8208898}
   CollidableLayers:
     serializedVersion: 2
     m_Bits: 2304
+--- !u!114 &11492356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c6c1c6a74ded4d498f992fa52f3b9ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MAX_ANGLE: 65
+  MAX_HP: 100
+  INPUT_SENSITIVITY: .5
 --- !u!212 &21269290
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -307,6 +386,26 @@ Prefab:
       propertyPath: SoundSource
       value: 
       objectReference: {fileID: 8208898}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_GravityScale
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 151074}

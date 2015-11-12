@@ -26,7 +26,21 @@ public class CameraController : MonoBehaviour {
         shakeDelay = Mathf.Min(shakeDelayMax * 2f, shakeDelay + shakeDelayMax);
     }
 
-	void Update () {
+	void Update () 
+    {
+
+        // Тряска камеры
+        if (shakeDelay > 0)
+        {
+            shakeDelay -= Time.deltaTime;
+            var shakeMul = shakeDelay / shakeDelayMax;
+            transform.Translate(Random. Range(-shakeRange, shakeRange) * shakeMul, 0f, 0f);
+        }
+        
+        // Еще один костыль?
+        if (playerTurret == null)
+            return;
+        
         // Вычисления поворота турели
         float turretRotationOffset = playerTurret.transform.localEulerAngles.z;
         if (turretRotationOffset > 180)
@@ -38,18 +52,5 @@ public class CameraController : MonoBehaviour {
         currentPositon.x = -turretRotationOffset * maxPositionOffset;
         transform.localPosition = new Vector3(currentPositon.x, currentPositon.y, currentPositon.z);
     
-        // Test
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            Shake();
-        }
-
-        // Тряска камеры
-        if (shakeDelay > 0)
-        {
-            shakeDelay -= Time.deltaTime;
-            var shakeMul = shakeDelay / shakeDelayMax;
-            transform.Translate(Random. Range(-shakeRange, shakeRange) * shakeMul, 0f, 0f);
-        }
     }
 }

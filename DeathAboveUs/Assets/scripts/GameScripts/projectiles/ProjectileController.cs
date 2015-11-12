@@ -14,7 +14,7 @@ public class ProjectileController : MonoBehaviour
 	
 	public void Update () 
 	{
-        if (transform.position.y >= GameUtils.cameraHeight / 2)
+        if (transform.position.y >= GameUtils.cameraHeight / 2 || transform.position.y <= -GameUtils.cameraHeight / 2)
         {
             Destroy(gameObject);
         }

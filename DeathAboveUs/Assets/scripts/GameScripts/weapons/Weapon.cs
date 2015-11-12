@@ -10,14 +10,13 @@ public class Weapon : MonoBehaviour
 	public List<GameObject> Barrels;
     public AudioSource SoundSource;
 	public LayerMask CollidableLayers;
+	
 	public void Start () 
 	{
-		isShooting = false;
         currentReloadTime = 0;	
         SoundSource.Stop();
 	}
 	
-	// Update is called once per frame
 	public void Update () 
 	{
 		currentReloadTime += Time.deltaTime * 1000;
