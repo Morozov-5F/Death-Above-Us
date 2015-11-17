@@ -26,7 +26,7 @@ public class SimpleTurretController : Turret
 			{
 				float currentRadius = (currentCollider.gameObject.transform.position - gameObject.transform.position).sqrMagnitude;
 				if (currentRadius < minRadius)
-				{
+				{	
 					minRadius = currentRadius;
 					newTarget = currentCollider.gameObject;
 				}
@@ -60,7 +60,7 @@ public class SimpleTurretController : Turret
 		}
 		Vector3 vecToTarget = target.transform.position - gameObject.transform.position;	
 		float desiredAngle = GameUtils.WrapAngle(Mathf.Atan2(vecToTarget.y, vecToTarget.x) * Mathf.Rad2Deg - 90);
-		float delta = desiredAngle - GameUtils.WrapAngle(gameObject.transform.eulerAngles.z);
+		float delta = desiredAngle - GameUtils.WrapAngle(turret.gameObject.transform.eulerAngles.z);
 		if (Mathf.Abs(delta) < RadarError)
 		{
 			weapon.isShooting = true;
@@ -71,4 +71,8 @@ public class SimpleTurretController : Turret
 			weapon.isShooting = false;
 		}
 	}
+	new public void OnBulletHit(float damage)
+    {
+        base.OnBulletHit(damage); 
+    }
 }

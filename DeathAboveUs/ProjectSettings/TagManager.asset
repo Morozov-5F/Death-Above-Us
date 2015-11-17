@@ -9,6 +9,7 @@ TagManager:
   - Background
   - GUI
   - Enemy
+  - Turret
   layers:
   - Default
   - TransparentFX

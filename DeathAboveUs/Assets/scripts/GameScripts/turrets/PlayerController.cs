@@ -59,9 +59,7 @@ public class PlayerController : Turret
         
         if (hp <= 0)
         {
-            // Пока костыль
-            var toDestroy = GameObject.Find("Player");
-            Destroy(toDestroy);
+            Destroy(gameObject);
             // Вызов экрана Game Over 
             var ui = Camera.main.GetComponent<GameUIController>();
             ui.ShowDeathUI();

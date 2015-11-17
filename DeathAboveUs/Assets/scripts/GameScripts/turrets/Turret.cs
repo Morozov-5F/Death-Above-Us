@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class Turret : MonoBehaviour 
 {
@@ -8,19 +7,22 @@ public class Turret : MonoBehaviour
 	public float INPUT_SENSITIVITY = 1f;
     protected Weapon weapon;
     protected float hp;
-	
+	public Transform turret;
+    
+    
 	public void Start () 
 	{
         hp = (float)MAX_HP;
-        weapon = GetComponent<Weapon>();
+        weapon = GetComponentInChildren<Weapon>();
+        turret = transform.Find("turret");
     }
 
     public void Rotate(float angle)
     {
-        var currentRotation = transform.localEulerAngles.z;
+        var currentRotation = turret.transform.localEulerAngles.z;
         currentRotation += angle * INPUT_SENSITIVITY;
         currentRotation = Mathf.Clamp(currentRotation > 180 ? currentRotation - 360 : currentRotation, -MAX_ANGLE, MAX_ANGLE);
-        transform.localEulerAngles = new Vector3(0f, 0f, currentRotation);
+        turret.transform.localEulerAngles = new Vector3(0f, 0f, currentRotation);
     }
 
     public void OnBulletHit(float damage)
@@ -28,6 +30,7 @@ public class Turret : MonoBehaviour
         hp -= damage;
         if (hp <= 0)
         {
+            Debug.Log("Test");
             Destroy(gameObject);
         }   
     }

@@ -25,7 +25,7 @@ public class ProjectileController : MonoBehaviour
 		if (((CollidableLayers.value >> collider.gameObject.layer) & 0x1) != 0)
 		{
 			Destroy(gameObject);
-            collider.gameObject.SendMessage("OnBulletHit", Damage);
+			collider.gameObject.SendMessage("OnBulletHit", Damage);
 		}
     }
 }

@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour {
         shakeDelay = 0f;
 
         var playerGameObject = GameObject.Find("Player");
-        playerTurret = playerGameObject.transform.Find("turret").GetComponent<PlayerController>();
+        playerTurret = playerGameObject.GetComponent<PlayerController>();
 
         // Вычисление максимального смещения камеры по X
         maxPositionOffset = Mathf.Max(0f, (backgroundLayerWidth - GameUtils.cameraWidth) / 2f);
@@ -42,7 +42,7 @@ public class CameraController : MonoBehaviour {
             return;
         
         // Вычисления поворота турели
-        float turretRotationOffset = playerTurret.transform.localEulerAngles.z;
+        float turretRotationOffset = playerTurret.turret.transform.localEulerAngles.z;
         if (turretRotationOffset > 180)
             turretRotationOffset -= 360;
         turretRotationOffset /= playerTurret.MAX_ANGLE;
